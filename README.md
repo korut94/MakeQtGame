@@ -4,10 +4,10 @@ any errors. The other experiments on the many topics about a game will be
 tried over the other branches started from here.
 
 ## Technical Report
-Any times that an experiment is builded create, in the experiment's directory,
+Any times that an experiment is builded is necessary create, in the experiment's directory,
 a README.md file with a techical report about it. I taked the **Technical 
 Report Format** of the *University of Kansas*' EECS course. The following
-table show a rapidly abstract of the report's parts:
+table shows a rapidly abstract of the report's parts:
 
 | Section | Description |
 | :---: | --- |
@@ -27,11 +27,11 @@ More detailed explanations will be found here:
 
 Some notes: the table of contents is very usefull but it's not mandatory. The
 markdown isn't LaTeX but it's a strument to simplify the writing and the
-to publish the experiment: don't worry! Also for the *Appendices* section,
+to publish the experiment: so, don't worry! Also for the *Appendices* section,
 never mind. 
 
-The only raccomandation is about the *Reference*. If your experiment derives
-from one or more other experiments, put the name of branches them so it's easy
+The only raccomandation is about the *Reference*. If your derived experiment
+which origin are one or more other experiments, put the name of branches them so it's easy
 to understand what you did.
 
 # Resource
