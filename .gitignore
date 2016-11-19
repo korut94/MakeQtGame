@@ -1,6 +1,9 @@
 # Temporary files
 *.*~
 *#*
+.directory
 
 # Qt compilation output
 *.pro.user
+
+
