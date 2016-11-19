@@ -11,10 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = MakeQtGame
 TEMPLATE = app
 
+INCLUDEPATH += $$PWD/include
 
-SOURCES += main.cpp \
-    game.cpp
-
-HEADERS += \
-    game.h
-
+include(source/source.pri)
+include(include/include.pri)
