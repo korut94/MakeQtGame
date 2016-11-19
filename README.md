@@ -53,7 +53,7 @@ include(include/include.pri)
 The image below show how to the final resault appears.
 
 ![Tree directory project]
-(https://drive.google.com/file/d/0B-wQPg311ZWgMjN6WU41SFkxbmM/view?usp=sharing)
+(https://s21.postimg.org/inr7nv65z/creator_tree_project.png)
 
 ## Conclusion
 We have a clean directory with the header files separte from the source files.
