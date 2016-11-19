@@ -1,4 +1,4 @@
-# Experiment Qt Game
+# MakeQtGame
 The branch master keeps the basic code to run the application withouth arise in
 any errors. The other experiments on the many topics about a game will be
 tried over the other branches started from here.
