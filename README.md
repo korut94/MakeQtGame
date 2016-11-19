@@ -1,43 +1,81 @@
-# Experiment Qt Game
-The branch master keeps the basic code to run the application withouth arise in
-any errors. The other experiments on the many topics about a game will be
-tried over the other branches started from here.
+# Source and Header Directory
 
-## Technical Report
-Any times that an experiment is builded is necessary create, in the experiment's directory,
-a README.md file with a techical report about it. I taked the **Technical 
-Report Format** of the *University of Kansas*' EECS course. The following
-table shows a rapidly abstract of the report's parts:
+## Abstract
+So we now want have a good organization and the basiest way to achive is
+divide the working space at least in the **source** and **header** directories.
 
-| Section | Description |
-| :---: | --- |
-| Title Page | The title of the experiment |
-| Abstract | Explain what you want change in the program |
-| Table contents | Include all the report sections, subsections, and appendices |
-| Introduction | Explain whay did you do, why did you do and the main result |
-| Body | Write as many as possible about the experiment. The diagrams, images and table are very useful. |
-| Conclusion | Is the experiment's result significative? |
-| References | The source of your information |
-| Appendices | Some explanation|
+## Introduction
+The basic approach consist to create for each directory a `.pro` file with the
+relative information to be include into the project. After that a `.pri` should
+merge all them to build the project.
 
-More detailed explanations will be found here:
+## Body
+As the section intruduction explain, the two directory `source` and `include`
+have been added to store in the first the sources of the project and in other
+the header files. To achieve at this I created the `.pri` file in both
+directories with the qmake statement to import the necessary file how specify
+below:
 
-[https://www.ittc.ku.edu/~frost/EECS_563/Writing%20Technical%20Reports.pdf]
-(https://www.ittc.ku.edu/~frost/EECS_563/Writing%20Technical%20Reports.pdf)
+```
+// source.pri
+SOURCES += source/game.cpp \
+           source/main.cpp
+```
 
-Some notes: the table of contents is very usefull but it's not mandatory. The
-markdown isn't LaTeX but it's a strument to simplify the writing and the
-to publish the experiment: so, don't worry! Also for the *Appendices* section,
-never mind. 
+```
+// include.pri
+HEADERS += include/game.h \
+```
 
-The only raccomandation is about the *Reference*. If your derived experiment
-which origin are one or more other experiments, put the name of branches them so it's easy
-to understand what you did.
+An other important thing is that now to include a header file in necessary use
+the form of path: `#include 'include/my_header_file.h'` that is very stupid 
+because if we want a unique directory for all header files, it's obviously that
+they will be there. The fix to avoid the redundand inclusion is add to the
+`INCLUDEPATH`  variable in the `.pro` file the paths in which they are stored:
 
-# Resource
-[Technical Report Format - University of Kansas' EECS]
-(https://www.ittc.ku.edu/~frost/EECS_563/Technical%20Report%20Format%20for%20EECS%20563_2014.pdf)
+```
+// .pro
+INCLUDEPATH += $$PWD/include
+```
 
-[Technical Report writing guidelines]
-(http://www8.sunydutchess.edu/faculty/akins/documents/TechnicalReportWritingGuidelines.pdf)
+Now to include for example `game.h` it's enough writing: `#include 'game.h'`.
 
+Perfect, but now the qmake are not knowing the file's location because it see
+in the `.pro` file the declaration of the path but there isn't. To say it where
+to found the files just include the `.pri` files location in the `.pro`:
+
+```
+// .pro
+include(source/source.pri)
+include(include/include.pri)
+```
+
+The image below show how to the final resault appears.
+
+![Tree directory project](resource/img/creator_tree_project.png)
+
+## Conclusion
+We have a clean directory with the header files separte from the source files.
+
+However us approach is **more different** than QtCreator usally does. You can
+create more directories with any topics about the game but you can not separete
+their header and sourced files in two directories, because it puts all them
+together, writes the relative path into the `.pro` files and then uses the
+`HEADER` and `SOURCE` variables making an abstract separation to show in the
+editor.
+
+This involve that when we want add a class we must include it in the
+`include.pri` and `source.pri` file **MANUALLY**!
+
+Personally I prefer to do this instead to have directories with a pile of files
+that I can see their separate only when I will use Qt Creator.
+
+## Resources
+[Creating an organized project with Qt Creator - QT Forum]
+(https://forum.qt.io/topic/6814/solved-file-organization-creating-an-organized-project-with-qt-creator/5)
+
+[How to add include path in Qt Creator? - Stack Overflow]
+(http://stackoverflow.com/questions/2752352/how-to-add-include-path-in-qt-creator)
+
+### Inherits
+[master](https://github.com/korut94/MakeQtGame)
