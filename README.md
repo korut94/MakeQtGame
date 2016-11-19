@@ -1,4 +1,4 @@
-# Source and Header Directory
+# Source and Header Directories
 
 ## Abstract
 So we now want have a good organization and the basiest way to achive is
@@ -57,7 +57,7 @@ The image below show how to the final resault appears.
 ## Conclusion
 We have a clean directory with the header files separte from the source files.
 
-However us approach is **more different** than QtCreator usally does. You can
+However us approach is **more different** than Qt Creator usally does. You can
 create more directories with any topics about the game but you can not separete
 their header and sourced files in two directories, because it puts all them
 together, writes the relative path into the `.pro` files and then uses the
