@@ -65,8 +65,10 @@ together, writes the relative path into the `.pro` files and then uses the
 `HEADER` and `SOURCE` variables making an abstract separation to show in the
 editor.
 
-This involve that when we want add a class we must include it in the
-`include.pri` and `source.pri` file **MANUALLY**!
+However Qt Creator is not so stupid. In fact to add a class it's enough click
+on the virtual directories `Headers` and `Sources`, select the `add new...`
+dropdown menu's option, complete the forms and Qt Creator will include in our
+`.pri` files the header and source locations respectively.
 
 Personally I prefer to do this instead to have directories with a pile of files
 that I can see their separate only when I will use Qt Creator.
@@ -80,3 +82,6 @@ that I can see their separate only when I will use Qt Creator.
 
 ### Inherits
 [master](https://github.com/korut94/MakeQtGame)
+
+## History
+* **Update the way to add a new class in the `Conclusion` section**
