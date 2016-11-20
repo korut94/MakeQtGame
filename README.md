@@ -84,4 +84,4 @@ that I can see their separate only when I will use Qt Creator.
 [master](https://github.com/korut94/MakeQtGame)
 
 ## History
-* **Update the way to add a new class in the `Conclusion` section**
+* **Update the way to add a new class in the `Conclusion` section** - 2016-11-16
