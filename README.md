@@ -33,7 +33,7 @@ HEADERS += include/game.h \
 
 Perfect, but now qmake are not knowing the file's location because it see in the `.pro` file
 and it doesn't find anything informations about the position of the files to compile. To say it
-where to search just add into the `.pro` file the qmake's include declaration with the `.pri`
+where to search, just add into the `.pro` file the qmake's include declaration with the `.pri`
 files' position:
 
 ```
