@@ -3,8 +3,8 @@
 ## Abstract
 So now we want have a good organization and the basiest way to achive it is
 divided the working space at least in two directories: **source** and **header**.
-The `source` directory keeps all source files (.c and .cpp) whereas the `header` all
-header files (.h).
+The `source` directory keeps all source files (*.c* and *.cpp*) whereas the `header` all
+header files (*.h*).
 
 ## Introduction
 The basic approach consist in the creation of a `.pro` file on the project's root with
