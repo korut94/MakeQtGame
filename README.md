@@ -34,7 +34,7 @@ The only raccomandation is about the *Reference*. If you derive an experiments
 from one or more other experiments, you will put their name them so it's easy
 to understand what you did.
 
-# Resource
+# Resources
 [Technical Report Format - University of Kansas' EECS]
 (https://www.ittc.ku.edu/~frost/EECS_563/Technical%20Report%20Format%20for%20EECS%20563_2014.pdf)
 
