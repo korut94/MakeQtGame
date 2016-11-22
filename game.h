@@ -2,8 +2,8 @@
 #define GAME_H
 
 /**
- * @brief The whole game is here. This is the main class with the managment
- * of all the aspects about a game (process input, render, update, etc.).
+ * @brief The whole game is here. This is the main class that manages
+ * all the aspects about the game (process input, render, update, etc.).
  */
 class Game
 {
