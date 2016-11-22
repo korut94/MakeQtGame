@@ -43,7 +43,7 @@ include(include/include.pri)
 ```
 
 However if I only do this, I will bump into an unpleasant surprise: to include a
-header declaration I should use the form: `#include "include/my_header_file.h"`
+header declaration I should use the form `#include "include/my_header_file.h"`
 that is a very redundant way because if we want a unique directory for all header files,
 it's obviously that all header files start from the `include` directory. 
 To avoid the borigin problem is necessary add still in the `.pro` file the `INCLUDEPATH`
