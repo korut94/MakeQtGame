@@ -1,19 +1,23 @@
 # Source and Header Directories
 
 ## Abstract
-So we now want have a good organization and the basiest way to achive is
-divide the working space at least in the **source** and **header** directories.
+So now we want have a good organization and the basiest way to achive it is
+divided the working space at least in two directories: **source** and **header**.
+The `source` directory keeps all source files (.c and .cpp) whereas the `header` all
+header files (.h).
 
 ## Introduction
-The basic approach consist to create for each directory a `.pro` file with the
-relative information to be include into the project. After that a `.pri` should
-merge all them to build the project.
+The basic approach consist in the creation of a `.pro` file on the project's root with
+the relative information on how to build project. Inside there, two `include`
+declarations points at the `.pri` files (one for the `source` directory and an other for
+`header` directory) that maintains the track all of files have to include during the
+compilation time.
 
 ## Body
-As the section intruduction explain, the two directory `source` and `include`
-have been added to store in the first the sources of the project and in other
+Like the section *Intruduction* explains, the two directory `source` and `include`
+have been added to store in the first the sources of the project and in the second
 the header files. To achieve at this I created the `.pri` file in both
-directories with the qmake statement to import the necessary file how specify
+directories with the qmake statements to import the necessary files, as specify
 below:
 
 ```
@@ -27,22 +31,10 @@ SOURCES += source/game.cpp \
 HEADERS += include/game.h \
 ```
 
-An other important thing is that now to include a header file in necessary use
-the form of path: `#include 'include/my_header_file.h'` that is very stupid 
-because if we want a unique directory for all header files, it's obviously that
-they will be there. The fix to avoid the redundand inclusion is add to the
-`INCLUDEPATH`  variable in the `.pro` file the paths in which they are stored:
-
-```
-// .pro
-INCLUDEPATH += $$PWD/include
-```
-
-Now to include for example `game.h` it's enough writing: `#include 'game.h'`.
-
-Perfect, but now the qmake are not knowing the file's location because it see
-in the `.pro` file the declaration of the path but there isn't. To say it where
-to found the files just include the `.pri` files location in the `.pro`:
+Perfect, but now qmake are not knowing the file's location because it see in the `.pro` file
+and it doesn't find anything informations about the position of the files to compile. To say it
+where to search just add into the `.pro` file the qmake's include declaration with the `.pri`
+files' position:
 
 ```
 // .pro
@@ -50,28 +42,39 @@ include(source/source.pri)
 include(include/include.pri)
 ```
 
+However if I only do this, I will bump into an unpleasant surprise: to include a
+header declaration I should use the form: `#include "include/my_header_file.h"`
+that is a very redundant way because if we want a unique directory for all header files,
+it's obviously that all header files start from the `include` directory. 
+To avoid the borigin problem is necessary add still in the `.pro` file the `INCLUDEPATH`
+statement with the `include` directory's path:
+
+```
+// .pro
+INCLUDEPATH += $$PWD/include
+```
+
+Now for example to include `game.h` just writing: `#include "game.h"`.
+
 The image below show how to the final resault appears.
 
 ![Tree directory project]
 (https://s21.postimg.org/inr7nv65z/creator_tree_project.png)
 
 ## Conclusion
-We have a clean directory with the header files separte from the source files.
+Finally, we have a clean project with the header files separte from the source files.
 
 However us approach is **more different** than Qt Creator usally does. You can
-create more directories with any topics about the game but you can not separete
-their header and sourced files in two directories, because it puts all them
-together, writes the relative path into the `.pro` files and then uses the
-`HEADER` and `SOURCE` variables making an abstract separation to show in the
-editor.
+create many sub-directories but when you want create a new class it always tries to put its
+header and source file in the same directory.
 
-However Qt Creator is not so stupid. In fact to add a class it's enough click
-on the virtual directories `Headers` and `Sources`, select the `add new...`
-dropdown menu's option, complete the forms and Qt Creator will include in our
-`.pri` files the header and source locations respectively.
+However Qt Creator is not so stupid. In fact it allows you to add at the directory 
+a header or source file where a `.pri` file resides and then it will write their path automatically
+into the directory's `.pri` file chosed as destination. In this way it's more confortable than
+to put the files **singularly and manually**!!  
 
 Personally I prefer to do this instead to have directories with a pile of files
-that I can see their separate only when I will use Qt Creator.
+that I can see the header and source files separated only when I use Qt Creator.
 
 ## Resources
 [Creating an organized project with Qt Creator - QT Forum]
