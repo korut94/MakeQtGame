@@ -14,7 +14,7 @@ declarations points at the `.pri` files (one for the `source` directory and an o
 compilation time.
 
 ## Body
-Like the section *Intruduction* explains, the two directory `source` and `include`
+Like the section "*Intruduction*" explains, the two directory `source` and `include`
 have been added to store in the first the sources of the project and in the second
 the header files. To achieve at this I created the `.pri` file in both
 directories with the qmake statements to import the necessary files, as specify
