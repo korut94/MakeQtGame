@@ -1,12 +1,12 @@
 # MakeQtGame
-The branch master keeps the basic code to run the application withouth arise in
-any errors. The other experiments on the many topics about a game will be
-tried over the other branches started from here.
+The branch master keeps the basic code to run the application withouth arise in errors.
+Other experiments about the game's topics will be discussed over the other branches
+started from this.
 
 ## Technical Report
-Any times that an experiment is builded is necessary create, in the experiment's directory,
-a README.md file with a techical report about it. I taked the **Technical 
-Report Format** of the *University of Kansas*' EECS course. The following
+Any experiments **must have** an attached technical report writed in the README.md file on
+the experiment's directory. I found 'The Technical Report Format' of the *University of Kansas*'
+EECS course and I thing that it's a very pretty and complete report structure. The following
 table shows a rapidly abstract of the report's parts:
 
 | Section | Description |
@@ -14,24 +14,24 @@ table shows a rapidly abstract of the report's parts:
 | Title Page | The title of the experiment |
 | Abstract | Explain what you want change in the program |
 | Table contents | Include all the report sections, subsections, and appendices |
-| Introduction | Explain whay did you do, why did you do and the main result |
+| Introduction | Explain whay did you do, why did you do and the main results |
 | Body | Write as many as possible about the experiment. The diagrams, images and table are very useful. |
 | Conclusion | Is the experiment's result significative? |
 | References | The source of your information |
-| Appendices | Some explanation|
+| Appendices | Some explanation |
 
-More detailed explanations will be found here:
+More detailed explanations should be found here:
 
 [https://www.ittc.ku.edu/~frost/EECS_563/Writing%20Technical%20Reports.pdf]
 (https://www.ittc.ku.edu/~frost/EECS_563/Writing%20Technical%20Reports.pdf)
 
 Some notes: the table of contents is very usefull but it's not mandatory. The
-markdown isn't LaTeX but it's a strument to simplify the writing and the
-to publish the experiment: so, don't worry! Also for the *Appendices* section,
+Markdown is not as LaTeX but it's a strument to simplify the writing and the
+publishing of the experiment: so, don't worry! Also for the *Appendices* section,
 never mind. 
 
-The only raccomandation is about the *Reference*. If your derived experiment
-which origin are one or more other experiments, put the name of branches them so it's easy
+The only raccomandation is about the *Reference*. If you derive an experiments
+from one or more other experiments, you will put their name them so it's easy
 to understand what you did.
 
 # Resource
