@@ -5,7 +5,7 @@ started from this.
 
 ## Technical Report
 Any experiments **must have** an attached technical report writed in the README.md file on
-the experiment's directory. I found 'The Technical Report Format' of the *University of Kansas*'
+the experiment's directory. I found "The Technical Report Format" of the *University of Kansas*'
 EECS course and I thing that it's a very pretty and complete report structure. The following
 table shows a rapidly abstract of the report's parts:
 
