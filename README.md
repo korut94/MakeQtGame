@@ -12,10 +12,10 @@ table shows a rapid abstract of the report's parts:
 | Section | Description |
 | :---: | --- |
 | Title Page | The title of the experiment |
-| Abstract | Explain what you want change in the program |
+| Abstract | Explain what you want to change in the program |
 | Table contents | Include all the report sections, subsections, and appendices |
-| Introduction | Explain whay did you do, why did you do and the main results |
-| Body | Write as many as possible about the experiment. The diagrams, images and table are very useful. |
+| Introduction | Explain what did you do, the reason why you did it and the main results |
+| Body | Write as many as possible about the experiment: diagrams, images and table are very useful. |
 | Conclusion | Is the experiment's result significative? |
 | References | The source of your information |
 | Appendices | Some explanation |
