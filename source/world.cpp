@@ -20,5 +20,6 @@ void World::update(const qreal elapsedTime)
 void World::draw(const qreal dt)
 {
   Q_UNUSED(dt);
-  mScene.update();
+  // It's no necessary call update to render the last modifies
+  // mScene.update();
 }
