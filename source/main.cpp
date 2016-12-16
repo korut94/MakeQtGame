@@ -4,9 +4,8 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    Game game;
-    game.run();
+  Game game(argc, argv);
+  game.run();
 
-    return a.exec();
+  return 0;
 }
