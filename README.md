@@ -14,5 +14,6 @@ However in absence of a logic to limited the CPU's cycles the program sends the
 processor speed at the maximum level also if it be in indle.
 
 **Result**: *negative*
+
 **Derived from**: [header_source](https://github.com/korut94/MakeQtGame/tree/header_source)
 
