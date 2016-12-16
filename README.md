@@ -1,6 +1,4 @@
 # Game Loop v1
-
-## Summary
 The goal of the experiment is remove all calls to virtual methods or signal/slot
 binding, so not leading the performance downward along the execution time.
 
