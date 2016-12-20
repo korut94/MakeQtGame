@@ -1,17 +1,15 @@
-# Game Loop v1
-The goal of the experiment is remove all calls to virtual methods or signal/slot
-binding, so not leading the performance downward along the execution time.
+# Game Loop v2
+In this Game Loop's verion the QApplication's event loop are replaced with the GameLoop class defined in the
+previous verion so to guarantee a greater stability in accordance with the number of items over the screen.
 
-For this reason a traditional game loop was writed using the Qt's process
-events to handle both internal events (render window, update scene, ...) and
-external inputs (mouse, keyboard, ...) in a lightweigth and easy way. Instead
-the `World` and the `GameClock` (rename it in `GameLoop`) wasn't subject to
-big changes.
+In the `Game::run` method a `QApplication` is runned and the view and world parametes are defined. For now
+all options are hard-coded but the future verions will build a *configure system* to add more flexibility at
+the program.
 
-However in absence of a logic to limited the CPU's cycles the program sends the
-processor speed at the maximum level also if it be in indle.
+## UML
+[![game_loop_v2.png](https://s5.postimg.org/l2zzu6u1z/game_loop_v2.png)](https://postimg.org/image/ecjikr6w3/)
 
-**Result**: *negative*
+**Result**: *positive*
 
-**Derived from**: [header_source](https://github.com/korut94/MakeQtGame/tree/header_source)
+**Derived from**: [game_loop_v1](https://github.com/korut94/MakeQtGame/tree/game_loop_v1)
 
