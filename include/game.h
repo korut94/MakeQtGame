@@ -15,6 +15,8 @@ class Game
   public:
     /**
      * @brief Default costructor.
+     * @param Number of arguments
+     * @param Array of string with the argument values
      */
     Game(int argc, char *argv[]);
 
