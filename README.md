@@ -6,6 +6,9 @@ In the `Game::run` method a `QApplication` is runned and the view and world para
 all options are hard-coded but the future verions will build a *configure system* to add more flexibility at
 the program.
 
+The intent to use a `QApplication` is semplify the render aspect (like the update step) withouth lose the
+possibility to extend the architecture (using *OpenGL Widget* viewport to lead in bigger rendering perfomance).
+
 ## UML
 [![game_loop_v2.png](https://s5.postimg.org/l2zzu6u1z/game_loop_v2.png)](https://postimg.org/image/ecjikr6w3/)
 
