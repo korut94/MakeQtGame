@@ -2,9 +2,8 @@
 #define GAME_H
 
 #include <QApplication>
-#include <QFrame>
+#include <QGraphicsView>
 
-#include "gameloop.h"
 #include "world.h"
 
 /**
@@ -13,8 +12,6 @@
  */
 class Game
 {
-    friend class GameLoop;
-
   public:
     /**
      * @brief Default costructor.
@@ -23,47 +20,19 @@ class Game
 
     /**
      * @brief Run the game! But pay attampion to don't get hurt.
+     * @return Return the game state's code
      */
-    void run();
+    int run();
 
   private:
-    QApplication        mHandlerEvents;
     /**
-     * @brief The windows that show the game.
+     * @brief Number arguments passed by command line
      */
-    QFrame              mWindow;
+    int   m_argc;
     /**
-     * @brief The place in the game where the things happens.
+     * @brief Argument values
      */
-    World               mWorld;
-    /**
-     * @brief The loop logic
-     */
-    GameLoop            mLoop;
-
-    /**
-     * @brief Determine when the game is concluded
-     * @return Return the condition stop status
-     */
-    bool  isRunning() const;
-    /**
-     * @brief Process all events are queuing
-     */
-    void  processEvents();
-    /**
-     * @brief Call the window's method to refresh the scene with the possible
-     * changes
-     * @param dt, value between 0 and 1 that define the normileze distance
-     * from the current update to next one.
-     */
-    void  render(const qreal dt);
-    /**
-     * @brief Call the scene's method to advance with the game.
-     * @param elapsedTime, the time occurred between two frame. Passed the time
-     * occured as variable allow to use both fixed time step and variable delta
-     * time.
-     */
-    void  update(const qreal elapsedTime);
+    char  **m_argv;
 };
 
 #endif // GAME_H

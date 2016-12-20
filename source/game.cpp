@@ -1,35 +1,21 @@
-#include <QTime>
-
 #include "game.h"
 
 Game::Game(int argc, char *argv[])
-: mHandlerEvents(argc, argv),
-  mWindow(),
-  mWorld(&mWindow),
-  mLoop(*this) {}
+: m_argc(argc),
+  m_argv(argv) {}
 
-bool Game::isRunning() const
+int Game::run()
 {
-  return mWindow.isVisible();
-}
+  QApplication app(m_argc, m_argv);
 
-void Game::processEvents()
-{
-  mHandlerEvents.processEvents();
-}
+  World world;
+  world.setSceneRect(0, 0, 800, 600);
 
-void Game::render(const qreal dt)
-{
-  mWorld.draw(dt);
-}
+  QGraphicsView view(&world);
+  view.setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  view.setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  view.setFixedSize(world.sceneRect().size().toSize());
+  view.show();
 
-void Game::run()
-{
-  mWindow.show();
-  mLoop.start();
-}
-
-void Game::update(const qreal elapsedTime)
-{
-  mWorld.update(elapsedTime);
+  return app.exec();
 }
