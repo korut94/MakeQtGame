@@ -4,14 +4,11 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+TEMPLATE  = subdirs
+SUBDIRS  += core \
+            modules
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+target_script.files = script/*
+target_script.path  = $${OUT_PWD}/script
 
-TARGET = MakeQtGame
-TEMPLATE = app
-
-INCLUDEPATH += $$PWD/include
-
-include(source/source.pri)
-include(include/include.pri)
+INSTALLS += target_script
