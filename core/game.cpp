@@ -94,10 +94,9 @@ int Game::exec()
   QScriptEngine engine;
 
   Entity::EntityBook entityBook;
-  Entity::EntityLoader entityLoader(
-        entityBook,
-        libs::loadPluginGame<libs::EntityInterface>
-  );
+  Entity::EntityLoader
+      entityLoader(entityBook,
+                   libs::loadPluginGame<libs::EntityInterface>);
   Entity::EnvProxyEntityLoader proxyEntityLoader(entityLoader);
 
   World world;
