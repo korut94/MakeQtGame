@@ -4,9 +4,8 @@
 #include <QApplication>
 #include <QScriptEngine>
 
-#include "aka.h"
-#include "envproxyentityloader.h"
 #include "entitybook.h"
+#include "envproxyentityloader.h"
 #include "gamewindow.h"
 #include "world.h"
 
