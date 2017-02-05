@@ -1,6 +1,8 @@
 #include <QDebug>
 #include <QFile>
 
+#include "entityinterface.h"
+#include "entityloader.h"
 #include "loadplugingame.h"
 #include "game.h"
 
