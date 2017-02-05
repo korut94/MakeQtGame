@@ -1,7 +1,7 @@
-# Docker
-A docker file to keep track of the game's dependecies and how to install them.
+# Script Engine
+The goal is able to manipulate the game state by a script environment.
 
-**Result**: *In progress*
+Note: In the class EntityBook if you try to insert a Factory parameter in the EntityBook::registerEntity method the PluginLoader fails to load the entity's plugin.
 
-**Derived from**: [game_loop_v2](https://github.com/korut94/MakeQtGame/tree/game_loop_v2)
+**Derived from**: [Docker](https://github.com/korut94/MakeQtGame/tree/docker)
 
