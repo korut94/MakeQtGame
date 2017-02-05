@@ -3,9 +3,8 @@
 
 #include <QObject>
 
-#include "aka.h"
-#include "entitybook.h"
-#include "resourceloader.h"
+#include "abstractentityloader.h"
+#include "entityloader.h"
 
 namespace mqg
 {
