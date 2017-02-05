@@ -14,8 +14,6 @@ namespace mqg
 {
 namespace Entity
 {
-typedef std::function<QGraphicsItem*()> Factory;
-
 /**
  * @brief The EntityBook class registers all the entities of the game keeping
  * a list of their name.
@@ -25,6 +23,8 @@ class EntityBook : public QObject
   Q_OBJECT
 
 public:
+  typedef std::function<QGraphicsItem*()> Factory;
+
   // Simple wrapper fore create and list so to use them in the script
   // enviromnemt
   static QScriptValue wrapperCreate(QScriptContext *context,
@@ -52,8 +52,7 @@ public:
    * @param The entity's name.
    */
   template <typename Entity>
-  void            registerEntity(const QString &name,
-                                 Factory factory = defaultFactory<Entity>);
+  void            registerEntity(const QString &name);
 
 signals:
   /**
@@ -63,22 +62,16 @@ signals:
   void entityCreated(QGraphicsItem *entity);
 
 private:
-  template <typename Entity>
-  static Entity* defaultFactory();
-
   QMap<QString, Factory>  m_registerFactory;
 };
 
 template <typename Entity>
-Entity* defaultFactory()
+void EntityBook::registerEntity(const QString &name)
 {
-  return new Entity();
-}
-
-template <typename Entity>
-void EntityBook::registerEntity(const QString &name, Factory factory)
-{
-  m_registerFactory[name] = factory;
+  m_registerFactory[name] = [] ()
+  {
+    return new Entity();
+  };
 }
 } // namespace Entity
 } // namespace mqg

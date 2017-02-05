@@ -29,6 +29,7 @@ HEADERS += \
     resourceloader.h \
     abstractresourceloader.h \
     envproxyentityloader.h \
+    aka.h \
     loadplugingame.h
 
 RESOURCES += \
