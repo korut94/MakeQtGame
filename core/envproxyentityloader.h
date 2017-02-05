@@ -3,20 +3,13 @@
 
 #include <QObject>
 
-#include "entityinterface.h"
-#include "resourceloader.h"
+#include "abstractentityloader.h"
+#include "entityloader.h"
 
 namespace mqg
 {
 namespace Entity
 {
-class EntityBook;
-
-typedef
-AbstractResourceLoader<EntityBook, libs::IEntityLoader>  AbstractEntityLoader;
-typedef
-ResourceLoader<EntityBook, libs::IEntityLoader>          EntityLoader;
-
 /**
  * @brief The EnvProxyEntityLoader class allow the control of an EntityLoader
  * instance inside the script environment. The EnvProxyEntityLoader is just

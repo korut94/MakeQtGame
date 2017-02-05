@@ -4,8 +4,8 @@
 #include <QApplication>
 #include <QScriptEngine>
 
-#include "entitybook.h"
 #include "envproxyentityloader.h"
+#include "entitybook.h"
 #include "gamewindow.h"
 #include "world.h"
 
@@ -58,9 +58,8 @@ private:
    * @param The engine that provides the script environment.
    * @param The EntityBook instance to load into the environment
    */
-  static void shareEntityBookOverEnv(
-      QScriptEngine &engine,
-      Entity::EntityBook &book);
+  static void shareEntityBookOverEnv(QScriptEngine &engine,
+                                     Entity::EntityBook &book);
 
   /**
    * @brief Load the EnvProxyEntityLoader over the environemnt.
@@ -76,9 +75,8 @@ private:
    * @param The engine that provides the script environment.
    * @param The GameWindow instance to load into the environment
    */
-  static void shareGameWindowOverEnv(
-      QScriptEngine &engine,
-      GameWindow &window);
+  static void shareGameWindowOverEnv(QScriptEngine &engine,
+                                     GameWindow &window);
 
   /**
    * @brief Wrap the static Game method `import` over the environemnt.

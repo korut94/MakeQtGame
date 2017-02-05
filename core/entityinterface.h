@@ -1,20 +1,10 @@
-// The header owns the EntityInterface definition plus the IEntityLoader alias
-//
-
 #ifndef ENTITYINTERFACE_H
 #define ENTITYINTERFACE_H
 
-#include <functional>
-
-#include <QString>
+#include "entitybook.h"
 
 namespace mqg
 {
-namespace Entity
-{
-class EntityBook;
-} // namespace Entity
-
 namespace libs
 {
 /**
@@ -50,8 +40,6 @@ public:
 
   virtual void saveIn(Entity::EntityBook &book) const = 0;
 };
-
-typedef std::function<EntityInterface*(const QString&)> IEntityLoader;
 } // namespace libs
 } // namespace mqg
 

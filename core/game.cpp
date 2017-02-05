@@ -1,6 +1,8 @@
 #include <QDebug>
 #include <QFile>
 
+#include "entityinterface.h"
+#include "entityloader.h"
 #include "loadplugingame.h"
 #include "game.h"
 
@@ -94,9 +96,10 @@ int Game::exec()
   QScriptEngine engine;
 
   Entity::EntityBook entityBook;
-  Entity::EntityLoader
-      entityLoader(entityBook,
-                   libs::loadPluginGame<libs::EntityInterface>);
+  Entity::EntityLoader entityLoader(
+        entityBook,
+        libs::loadPluginGame<libs::EntityInterface>
+  );
   Entity::EnvProxyEntityLoader proxyEntityLoader(entityLoader);
 
   World world;

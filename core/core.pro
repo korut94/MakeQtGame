@@ -29,7 +29,10 @@ HEADERS += \
     resourceloader.h \
     abstractresourceloader.h \
     envproxyentityloader.h \
-    loadplugingame.h
+    loadplugingame.h \
+    abstractentityloader.h \
+    entityloader.h \
+    functionentityloader.h
 
 RESOURCES += \
     resources.qrc
