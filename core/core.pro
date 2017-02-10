@@ -32,7 +32,10 @@ HEADERS += \
     loadplugingame.h \
     abstractentityloader.h \
     entityloader.h \
-    functionentityloader.h
+    functionentityloader.h \
+    ouput.h
 
 RESOURCES += \
     resources.qrc
+
+include(logic/logic.pri)
