@@ -15,7 +15,8 @@ class ResourceLoader : public AbstractResourceLoader<Store, Loader>
 public:
   explicit ResourceLoader(Store &store, const Loader &loader = Loader());
 
-  bool load(const QString &resourcePath) override;
+  decltype(auto)  list()    const;
+  bool            load(const QString &resourcePath) override;
 
 private:
   const Loader  &m_load;
@@ -27,6 +28,12 @@ ResourceLoader<Store, Loader>::ResourceLoader(Store &store,
                                               const Loader &loader)
   : m_load(loader),
     m_store(store) {}
+
+template <typename Store, typename Loader>
+decltype(auto) ResourceLoader<Store, Loader>::list() const
+{
+  return m_store.list();
+}
 
 template <typename Store, typename Loader>
 bool ResourceLoader<Store, Loader>::load(const QString &resourcePath)
