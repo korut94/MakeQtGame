@@ -15,7 +15,7 @@ namespace libs
  * invocation involve in a reloaded of the interface.
  */
 template <typename Interface>
-Interface* loadPluginGame(const QString &path)
+Interface* baseLoadPluginGame(const QString &path)
 {
   QPluginLoader loader(path);
   QObject *plugin = loader.instance();
