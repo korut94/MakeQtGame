@@ -1,4 +1,4 @@
-CONFIG   += c++11
+CONFIG   += c++14
 DESTDIR   = ../
 TARGET    = make_qt_game
 TEMPLATE  = app
@@ -32,7 +32,11 @@ HEADERS += \
     loadplugingame.h \
     abstractentityloader.h \
     entityloader.h \
-    functionentityloader.h
+    functionentityloader.h \
+    type_list.h \
+    extract.h \
+    apply.h \
+    containerinterface.h
 
 RESOURCES += \
     resources.qrc
