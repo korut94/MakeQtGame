@@ -14,7 +14,7 @@ namespace mqg
 {
 namespace Entity
 {
-typedef std::function<QGraphicsItem*()> Factory;
+using Factory = std::function<QGraphicsItem*()>;
 
 /**
  * @brief The EntityBook class registers all the entities of the game keeping
