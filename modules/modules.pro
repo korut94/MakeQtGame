@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     Game \
-    Entity
+    Entity \
+    Container
