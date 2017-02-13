@@ -3,13 +3,19 @@
 
 #include "entityinterface.h"
 #include "entityloader.h"
+#include "logic/container/containerbook.h"
+#include "logic/container/loader/containerloader.h"
 #include "loadplugingame.h"
 #include "game.h"
 
 #define BOOTSTRAPPER_PATH ":/mqg/core/bootstrapper.js"
 
+#include "logic/container/container.h"
+
 namespace mqg
 {
+namespace CLoader = Logic::Container::Loader;
+
 Game::Game(int argc, char *argv[])
   : QApplication(argc, argv) {}
 /*
@@ -65,6 +71,14 @@ void Game::shareEntityBookOverEnv(QScriptEngine &engine,
   engine.globalObject().setProperty("_entity", entity);
 }
 
+void Game::shareEnvProxyContainerLoaderOverEnv(
+    QScriptEngine &engine,
+    CLoader::EnvProxyContainerLoader &proxy)
+{
+  QScriptValue proxyContainerLoader = engine.newQObject(&proxy);
+  engine.globalObject().setProperty("_containerLoader", proxyContainerLoader);
+}
+
 void Game::shareEnvProxyEntityLoaderOverEnv(
     QScriptEngine &engine,
     Entity::EnvProxyEntityLoader &proxy)
@@ -98,21 +112,31 @@ int Game::exec()
   Entity::EntityBook entityBook;
   Entity::EntityLoader entityLoader(
         entityBook,
-        libs::loadPluginGame<libs::EntityInterface>
-  );
+        libs::baseLoadPluginGame<libs::EntityInterface>);
   Entity::EnvProxyEntityLoader proxyEntityLoader(entityLoader);
+
+  Logic::Container::ContainerBook containerBook;
+  CLoader::ContainerLoader containerLoader(
+        containerBook,
+        libs::baseLoadPluginGame<libs::ContainerInterface>);
+  CLoader::EnvProxyContainerLoader proxyContainerLoader(containerLoader);
 
   World world;
   GameWindow window(world);
 
   shareEntityBookOverEnv(engine, entityBook);
+  shareEnvProxyContainerLoaderOverEnv(engine, proxyContainerLoader);
   shareEnvProxyEntityLoaderOverEnv(engine, proxyEntityLoader);
   shareGameWindowOverEnv(engine, window);
   shareImportOverEnv(engine);
 
+  bootstrapping(engine);
+
+  Logic::Container::Container* c =
+      containerBook.create("EvalConsole", {window.console(), &engine});
+
   window.show();
 
-  bootstrapping(engine);
   return QApplication::exec();
 }
 } // namespace mqg
