@@ -6,6 +6,7 @@
 
 #include "envproxyentityloader.h"
 #include "entitybook.h"
+#include "logic/container/loader/envproxycontainerloader.h"
 #include "gamewindow.h"
 #include "world.h"
 
@@ -69,6 +70,15 @@ private:
   static void shareEnvProxyEntityLoaderOverEnv(
       QScriptEngine &engine,
       Entity::EnvProxyEntityLoader &proxy);
+
+  /**
+   * @brief shareEnvProxyContainerLoaderOverEnv
+   * @param engine
+   * @param proxy
+   */
+  static void shareEnvProxyContainerLoaderOverEnv(
+      QScriptEngine &engine,
+      Logic::Container::Loader::EnvProxyContainerLoader &proxy);
 
   /**
    * @brief Load the GameWindow over the environemnt.
