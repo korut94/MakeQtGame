@@ -26,7 +26,7 @@ public:
    * EntityLoader to share into the environment.
    * @param The EntityLoader instance to wrap.
    */
-  EnvProxyEntityLoader(EntityLoader &loader);
+  explicit EnvProxyEntityLoader(EntityLoader &loader);
 
 public slots:
   /**
@@ -40,7 +40,7 @@ public slots:
   bool load(const QString &resourcePath) override;
 
 private:
-  Entity::EntityLoader &m_loader;
+  EntityLoader &m_loader;
 };
 } // namespace Entity
 } // namespace mqg
