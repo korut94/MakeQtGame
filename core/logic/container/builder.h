@@ -1,25 +1,36 @@
 #ifndef BUILDER_H
 #define BUILDER_H
 
-#include <vector>
+#include "container.h"
+#include "../abstractlogic.h"
 
 namespace mqg
 {
 namespace Logic
 {
-class Logic;
-
 namespace Container
 {
 class Builder
 {
 public:
+  Builder();
+
   template <typename Item, typename... Args>
-  Item* addLogic(Args... arguments);
+  Item*       addLogic(Args... arguments);
+  Container*  build();
 
 private:
-  std::vector<Logic> m_tmpContainer;
+  Container *m_container;
 };
+
+template <typename Item, typename... Args>
+Item* Builder::addLogic(Args... arguments)
+{
+  Item *item = new Item(arguments...);
+  m_container->push_back(item);
+
+  return item;
+}
 } // namespace Container
 } // namespace Logic
 } // namespace mqg
