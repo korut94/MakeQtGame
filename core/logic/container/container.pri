@@ -1,7 +1,11 @@
 HEADERS += \
+    $$PWD/builder.h \
     $$PWD/container.h \
-    $$PWD/builder.h
+    $$PWD/containerbook.h \
+    $$PWD/loader.h
 
 SOURCES += \
-    $$PWD/container.cpp \
-    $$PWD/builder.cpp
+    $$PWD/builder.cpp \
+    $$PWD/containerbook.cpp
+
+include(loader/loader.pri)
