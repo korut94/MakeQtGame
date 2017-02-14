@@ -1,5 +1,5 @@
-#ifndef TYPE_LIST_H
-#define TYPE_LIST_H
+#ifndef TYPELIST_H
+#define TYPELIST_H
 
 #include <tuple>
 
@@ -10,13 +10,13 @@ namespace Utility
 namespace Injector
 {
 template <typename... Args>
-struct type_list
+struct TypeList
 {
   template <std::size_t N>
-  using type = typename std::tuple_element<N, std::tuple<Args...>>::type;
+  using Type = typename std::tuple_element<N, std::tuple<Args...>>::type;
 };
 } // namespace Injector
 } // namespace Utility
 } // namespace mqg
 
-#endif // TYPE_LIST_H
+#endif // TYPELIST_H
