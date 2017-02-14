@@ -9,7 +9,7 @@ namespace mqg
 {
 namespace Entity
 {
-typedef ResourceLoader<EntityBook, FunctionEntityLoader> EntityLoader;
+using EntityLoader = ResourceLoader<EntityBook, FunctionEntityLoader>;
 } // namespace Entity
 } // namespace mqg
 
