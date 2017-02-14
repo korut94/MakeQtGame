@@ -11,6 +11,12 @@ namespace Loader
 EnvProxyContainerLoader::EnvProxyContainerLoader(ContainerLoader &loader)
   : m_loader(loader) {}
 
+Container* EnvProxyContainerLoader::
+create(const QString &container, const Dependencies &dependencies) const
+{
+  return m_loader.create(container, dependencies);
+}
+
 QStringList EnvProxyContainerLoader::list() const
 {
   return m_loader.list();

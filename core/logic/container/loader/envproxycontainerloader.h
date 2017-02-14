@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "../container.h"
+#include "../dependencies.h"
 #include "containerloader.h"
 
 namespace mqg
@@ -21,6 +23,8 @@ public:
   explicit EnvProxyContainerLoader(ContainerLoader &loader);
 
 public slots:
+  Container*  create(const QString &container,
+                     const Dependencies &dependencies) const;
   QStringList list() const;
   bool        load(const QString &resourcePath);
 
