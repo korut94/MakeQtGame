@@ -9,9 +9,9 @@ namespace Container
 Container* ContainerBook::create(const QString &container,
                                  const Dependencies &dependencies) const
 {
-  auto itr = m_registerWriter.find(container);
+  auto itr = m_registerFactory.find(container);
 
-  if (itr == m_registerWriter.end()) {
+  if (itr == m_registerFactory.end()) {
     std::string msgError = "Not found a container registered by name '" +
                            container.toStdString() +
                            "' in the ContainerBook.";
@@ -19,15 +19,12 @@ Container* ContainerBook::create(const QString &container,
     throw std::runtime_error(msgError);
   }
 
-  Builder builder;
-  (itr.value())(&builder, dependencies);
-
-  return builder.build();
+  return (itr.value())(dependencies);
 }
 
 QStringList ContainerBook::list() const
 {
-  return m_registerWriter.keys();
+  return m_registerFactory.keys();
 }
 } // namespace Container
 } // namespace Logic
