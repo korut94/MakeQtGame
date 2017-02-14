@@ -16,7 +16,7 @@ SOURCES += \
     console.cpp \
     gamewindow.cpp \
     entitybook.cpp \
-    envproxyentityloader.cpp
+    envproxyentityholder.cpp
 
 HEADERS += \
     game.h \
@@ -26,15 +26,14 @@ HEADERS += \
     singleton.h \
     entityinterface.h \
     entitybook.h \
-    resourceloader.h \
-    envproxyentityloader.h \
-    loadplugingame.h \
-    entityloader.h \
-    functionentityloader.h \
     type_list.h \
     extract.h \
     apply.h \
-    containerinterface.h
+    containerinterface.h \
+    resourceholder.h \
+    basepluginloader.h \
+    entityholder.h \
+    envproxyentityholder.h
 
 RESOURCES += \
     resources.qrc
