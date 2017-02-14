@@ -6,4 +6,5 @@ _import("Game")
 
 _entityLoader.load("libs/entity/libboxman")
 _containerLoader.load("libs/container/libevalconsole")
-print(_entity.list())
+print(_entityLoader.list())
+print(_containerLoader.list())
