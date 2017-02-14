@@ -1,22 +1,35 @@
 #ifndef RESOURCELOADER_H
 #define RESOURCELOADER_H
 
-#include "abstractresourceloader.h"
+#include <QString>
 
 namespace mqg
 {
 /**
- * @brief ResourceLoader class realizes the abstract class
- * AbstractResourceLoader.
+ * @brief ResourceLoader class allow the instantiation of a resource reachable
+ * by a string. The resource just loaded will stored in a Store (the first
+ * template paramenter) leaving the ResourceLoader free from the
+ * effort of searching a common structure where put the Loader's accepted
+ * resources type. About the Loader (the second template parameter), it has to
+ * be intent like the algorithm to fetch the resource, provides a way to
+ * instantiate it in a second time and throws an exception when an errors has
+ * been arised. For this reason, the use of function object is encouraged.
  */
 template <typename Store, typename Loader>
-class ResourceLoader : public AbstractResourceLoader<Store, Loader>
+class ResourceLoader
 {
 public:
   explicit ResourceLoader(Store &store, const Loader &loader = Loader());
 
   decltype(auto)  list()    const;
-  bool            load(const QString &resourcePath) override;
+  /**
+   * @brief The method shoud instantiates the resource specified by the Loader
+   * and stores it into the Store.
+   * @param The path where the resources can be find.
+   * @return  Return true if the load is performed successfully,
+   * false otherwise.
+   */
+  bool            load(const QString &resourcePath);
 
 private:
   const Loader  &m_load;
