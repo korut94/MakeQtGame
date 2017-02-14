@@ -55,14 +55,6 @@ private:
   static QScriptValue import(QScriptContext *context, QScriptEngine *engine);
 
   /**
-   * @brief Load the EntityBook over the environemnt.
-   * @param The engine that provides the script environment.
-   * @param The EntityBook instance to load into the environment
-   */
-  static void shareEntityBookOverEnv(QScriptEngine &engine,
-                                     Entity::EntityBook &book);
-
-  /**
    * @brief Load the EnvProxyEntityLoader over the environemnt.
    * @param The engine that provides the script environment.
    * @param The EnvProxyEntityLoader instance to load into the environment

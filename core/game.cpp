@@ -14,8 +14,6 @@
 
 namespace mqg
 {
-namespace CLoader = Logic::Container::Loader;
-
 Game::Game(int argc, char *argv[])
   : QApplication(argc, argv) {}
 /*
@@ -60,31 +58,20 @@ QScriptValue Game::import(QScriptContext *context, QScriptEngine *engine)
   return !status.isError();
 }
 
-void Game::shareEntityBookOverEnv(QScriptEngine &engine,
-                                  Entity::EntityBook &book)
-{
-  QScriptValue entity = engine.newQObject(&book);
-  entity.setProperty("list",
-                     engine.newFunction(Entity::EntityBook::wrapperList));
-  entity.setProperty("create",
-                     engine.newFunction(Entity::EntityBook::wrapperCreate));
-  engine.globalObject().setProperty("_entity", entity);
-}
-
 void Game::shareEnvProxyContainerLoaderOverEnv(
     QScriptEngine &engine,
-    CLoader::EnvProxyContainerLoader &proxy)
+    Logic::Container::Loader::EnvProxyContainerLoader &proxy)
 {
-  QScriptValue proxyContainerLoader = engine.newQObject(&proxy);
-  engine.globalObject().setProperty("_containerLoader", proxyContainerLoader);
+  engine.globalObject().setProperty("_containerLoader",
+                                    engine.newQObject(&proxy));
 }
 
 void Game::shareEnvProxyEntityLoaderOverEnv(
     QScriptEngine &engine,
     Entity::EnvProxyEntityLoader &proxy)
 {
-  QScriptValue proxyEntityLoader = engine.newQObject(&proxy);
-  engine.globalObject().setProperty("_entityLoader", proxyEntityLoader);
+  engine.globalObject().setProperty("_entityLoader",
+                                    engine.newQObject(&proxy));
 }
 
 void Game::shareGameWindowOverEnv(QScriptEngine &engine, GameWindow &window)
@@ -116,15 +103,15 @@ int Game::exec()
   Entity::EnvProxyEntityLoader proxyEntityLoader(entityLoader);
 
   Logic::Container::ContainerBook containerBook;
-  CLoader::ContainerLoader containerLoader(
+  Logic::Container::Loader::ContainerLoader containerLoader(
         containerBook,
         libs::baseLoadPluginGame<libs::ContainerInterface>);
-  CLoader::EnvProxyContainerLoader proxyContainerLoader(containerLoader);
+  Logic::Container::Loader::EnvProxyContainerLoader
+      proxyContainerLoader(containerLoader);
 
   World world;
   GameWindow window(world);
 
-  shareEntityBookOverEnv(engine, entityBook);
   shareEnvProxyContainerLoaderOverEnv(engine, proxyContainerLoader);
   shareEnvProxyEntityLoaderOverEnv(engine, proxyEntityLoader);
   shareGameWindowOverEnv(engine, window);
@@ -133,7 +120,10 @@ int Game::exec()
   bootstrapping(engine);
 
   Logic::Container::Container* c =
-      containerBook.create("EvalConsole", {window.console(), &engine});
+      proxyContainerLoader.create("EvalConsole", {window.console(), &engine});
+
+  QGraphicsItem *b = proxyEntityLoader.create("BoxMan");
+  world.addItem(b);
 
   window.show();
 
