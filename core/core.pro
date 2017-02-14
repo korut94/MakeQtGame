@@ -26,14 +26,14 @@ HEADERS += \
     singleton.h \
     entityinterface.h \
     entitybook.h \
-    type_list.h \
     extract.h \
     apply.h \
     containerinterface.h \
     resourceholder.h \
     basepluginloader.h \
     entityholder.h \
-    envproxyentityholder.h
+    envproxyentityholder.h \
+    typelist.h
 
 RESOURCES += \
     resources.qrc
