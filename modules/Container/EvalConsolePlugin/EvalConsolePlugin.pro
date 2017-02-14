@@ -19,14 +19,14 @@ HEADERS += \
     evalconsoleplugin.h \
     lconsole.h \
     lengine.h \
-    ../../../core/logic/container/builder.h \
     ../../../core/logic/abstractlogic.h \
-    ../../../core/logic/unit.h
+    ../../../core/logic/unit.h \
+    ../../../core/logic/container/builder.h
 
 SOURCES += \
     evalconsoleplugin.cpp \
     lconsole.cpp \
     lengine.cpp \
-    ../../../core/logic/container/builder.cpp \
     ../../../core/logic/abstractlogic.cpp \
-    ../../../core/logic/unit.cpp
+    ../../../core/logic/unit.cpp \
+    ../../../core/logic/container/builder.cpp
