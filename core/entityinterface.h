@@ -36,8 +36,6 @@ namespace libs
 class EntityInterface
 {
 public:
-  virtual ~EntityInterface() {}
-
   virtual void saveIn(Entity::EntityBook &book) const = 0;
 };
 } // namespace libs
