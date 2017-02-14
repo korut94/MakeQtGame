@@ -3,14 +3,13 @@
 
 #include <functional>
 
-#include <QDebug>
 #include <QMap>
-#include <QObject>
 
 #include "../../apply.h"
 #include "../../extract.h"
-#include "container.h"
 #include "builder.h"
+#include "container.h"
+#include "dependencies.h"
 
 namespace mqg
 {
@@ -18,8 +17,6 @@ namespace Logic
 {
 namespace Container
 {
-using Dependencies = std::vector<QObject*>;
-
 class ContainerBook
 {
   using Writer = std::function<void(Builder*, const Dependencies&)>;
