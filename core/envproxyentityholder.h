@@ -1,41 +1,41 @@
-#ifndef ENVPROXYENTITYLOADER_H
-#define ENVPROXYENTITYLOADER_H
+#ifndef ENVPROXYENTITYHOLDER_H
+#define ENVPROXYENTITYHOLDER_H
 
 #include <QObject>
 #include <QGraphicsItem>
 
-#include "entityloader.h"
+#include "entityholder.h"
 
 namespace mqg
 {
 namespace Entity
 {
 /**
- * @brief The EnvProxyEntityLoader class allow the control of an EntityLoader
- * instance inside the script environment. The EnvProxyEntityLoader is just
- * a wrapper for the EntityLoader derived from QObject class that allow it
+ * @brief The EnvProxyEntityHolder class allow the control of an EntityHolder
+ * instance inside the script environment. The EnvProxyEntityHolder is just
+ * a wrapper for the EntityHolder derived from QObject class that allow it
  * to be shared in the script environment.
  */
-class EnvProxyEntityLoader : public QObject
+class EnvProxyEntityHolder : public QObject
 {
   Q_OBJECT
 
 public:
   /**
-   * @brief Construct an EnvProxyEntityLoader with a reference for the
+   * @brief Construct an EnvProxyEntityHolder with a reference for the
    * EntityLoader to share into the environment.
-   * @param The EntityLoader instance to wrap.
+   * @param The EntityHolder instance to wrap.
    */
-  explicit EnvProxyEntityLoader(EntityLoader &loader);
+  explicit EnvProxyEntityHolder(EntityHolder &holder);
 
 public slots:
   QGraphicsItem*  create(const QString &entity) const;
 
   QStringList     list() const;
   /**
-   * @brief Identical behavior to the EntityLoader counterpart but, since this
+   * @brief Identical behavior to the EntityHolder counterpart but, since this
    * method is a slot, the environemnt can invoke it by the
-   * EnvProxyEntityLoader instance loaded within.
+   * EnvProxyEntityHolder instance loaded within.
    * @param The resource's path where find it.
    * @return Return true if the load is performed successfully,
    * false otherwise.
@@ -43,9 +43,9 @@ public slots:
   bool            load(const QString &resourcePath);
 
 private:
-  EntityLoader &m_loader;
+  EntityHolder &m_holder;
 };
 } // namespace Entity
 } // namespace mqg
 
-#endif // ENVPROXYENTITYLOADER_H
+#endif // ENVPROXYENTITYHOLDER_H

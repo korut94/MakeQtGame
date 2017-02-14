@@ -1,11 +1,11 @@
-#ifndef ENVPROXYCONTAINERLOADER_H
-#define ENVPROXYCONTAINERLOADER_H
+#ifndef ENVPROXYCONTAINERHOLDER_H
+#define ENVPROXYCONTAINERHOLDER_H
 
 #include <QObject>
 
 #include "../container.h"
 #include "../dependencies.h"
-#include "containerloader.h"
+#include "containerholder.h"
 
 namespace mqg
 {
@@ -15,12 +15,12 @@ namespace Container
 {
 namespace Loader
 {
-class EnvProxyContainerLoader : public QObject
+class EnvProxyContainerHolder : public QObject
 {
   Q_OBJECT
 
 public:
-  explicit EnvProxyContainerLoader(ContainerLoader &loader);
+  explicit EnvProxyContainerHolder(ContainerHolder &holder);
 
 public slots:
   Container*  create(const QString &container,
@@ -29,7 +29,7 @@ public slots:
   bool        load(const QString &resourcePath);
 
 private:
-  ContainerLoader &m_loader;
+  ContainerHolder &m_holder;
 };
 } // namespace Loader
 } // namespace Container

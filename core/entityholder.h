@@ -1,16 +1,18 @@
-#ifndef ENTITYLOADER_H
-#define ENTITYLOADER_H
+#ifndef ENTITYHOLDER_H
+#define ENTITYHOLDER_H
 
+#include "basepluginloader.h"
 #include "entitybook.h"
-#include "functionentityloader.h"
-#include "resourceloader.h"
+#include "entityinterface.h"
+#include "resourceholder.h"
 
 namespace mqg
 {
 namespace Entity
 {
-using EntityLoader = ResourceLoader<EntityBook, FunctionEntityLoader>;
+using EntityHolder =
+  ResourceHolder<EntityBook, libs::BasePluginLoader<libs::EntityInterface>>;
 } // namespace Entity
 } // namespace mqg
 
-#endif // ENTITYLOADER_H
+#endif // ENTITYHOLDER_H

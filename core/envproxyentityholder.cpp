@@ -1,25 +1,25 @@
-#include "envproxyentityloader.h"
+#include "envproxyentityholder.h"
 
 namespace mqg
 {
 namespace Entity
 {
-EnvProxyEntityLoader::EnvProxyEntityLoader(EntityLoader &loader)
-  : m_loader(loader) {}
+EnvProxyEntityHolder::EnvProxyEntityHolder(EntityHolder &holder)
+  : m_holder(holder) {}
 
-QGraphicsItem* EnvProxyEntityLoader::create(const QString &entity) const
+QGraphicsItem* EnvProxyEntityHolder::create(const QString &entity) const
 {
-  return m_loader.create(entity);
+  return m_holder.create(entity);
 }
 
-QStringList EnvProxyEntityLoader::list() const
+QStringList EnvProxyEntityHolder::list() const
 {
-  return m_loader.list();
+  return m_holder.list();
 }
 
-bool EnvProxyEntityLoader::load(const QString &resourcePath)
+bool EnvProxyEntityHolder::load(const QString &resourcePath)
 {
-  return m_loader.load(resourcePath);
+  return m_holder.load(resourcePath);
 }
 } // namespace Entity
 } // namespace mqg

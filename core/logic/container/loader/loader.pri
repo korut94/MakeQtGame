@@ -1,7 +1,6 @@
 HEADERS += \
-    $$PWD/fcontainerloader.h \
-    $$PWD/containerloader.h \
-    $$PWD/envproxycontainerloader.h
+    $$PWD/containerholder.h \
+    $$PWD/envproxycontainerholder.h
 
 SOURCES += \
-    $$PWD/envproxycontainerloader.cpp
+    $$PWD/envproxycontainerholder.cpp

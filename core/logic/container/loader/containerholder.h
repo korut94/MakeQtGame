@@ -1,9 +1,10 @@
-#ifndef CONTAINERLOADER_H
-#define CONTAINERLOADER_H
+#ifndef CONTAINERHOLDER_H
+#define CONTAINERHOLDER_H
 
-#include "../../../resourceloader.h"
+#include "../../../basepluginloader.h"
+#include "../../../containerinterface.h"
+#include "../../../resourceholder.h"
 #include "../containerbook.h"
-#include "fcontainerloader.h"
 
 namespace mqg
 {
@@ -13,10 +14,13 @@ namespace Container
 {
 namespace Loader
 {
-using ContainerLoader = ResourceLoader<ContainerBook, FContainerLoader>;
+using ContainerHolder = ResourceHolder<
+  ContainerBook,
+  libs::BasePluginLoader<libs::ContainerInterface>
+>;
 } // namespace Loader
 } // namespace Container
 } // namespace Logic
 } // namespace mqg
 
-#endif // CONTAINERLOADER_H
+#endif // CONTAINERHOLDER_H
