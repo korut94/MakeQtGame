@@ -3,7 +3,6 @@
 
 #include <QObject>
 
-#include "abstractentityloader.h"
 #include "entityloader.h"
 
 namespace mqg
@@ -16,7 +15,7 @@ namespace Entity
  * a wrapper for the EntityLoader derived from QObject class that allow it
  * to be shared in the script environment.
  */
-class EnvProxyEntityLoader : public QObject, public AbstractEntityLoader
+class EnvProxyEntityLoader : public QObject
 {
   Q_OBJECT
 
@@ -37,7 +36,7 @@ public slots:
    * @return Return true if the load is performed successfully,
    * false otherwise.
    */
-  bool load(const QString &resourcePath) override;
+  bool load(const QString &resourcePath);
 
 private:
   EntityLoader &m_loader;

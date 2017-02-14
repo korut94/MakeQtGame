@@ -3,7 +3,6 @@
 
 #include <QObject>
 
-#include "abstractcontainerloader.h"
 #include "containerloader.h"
 
 namespace mqg
@@ -14,7 +13,7 @@ namespace Container
 {
 namespace Loader
 {
-class EnvProxyContainerLoader : public QObject, public AbstractContainerLoader
+class EnvProxyContainerLoader : public QObject
 {
   Q_OBJECT
 
@@ -23,7 +22,7 @@ public:
 
 public slots:
   QStringList list() const;
-  bool        load(const QString &resourcePath) override;
+  bool        load(const QString &resourcePath);
 
 private:
   ContainerLoader &m_loader;
