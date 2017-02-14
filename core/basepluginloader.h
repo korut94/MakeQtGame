@@ -1,5 +1,5 @@
-#ifndef PLUGINGAMELOADER_H
-#define PLUGINGAMELOADER_H
+#ifndef BASEPLUGINLOADER_H
+#define BASEPLUGINLOADER_H
 
 #include <QPluginLoader>
 
@@ -15,18 +15,21 @@ namespace libs
  * invocation involve in a reloaded of the interface.
  */
 template <typename Interface>
-Interface* baseLoadPluginGame(const QString &path)
+struct BasePluginLoader
 {
-  QPluginLoader loader(path);
-  QObject *plugin = loader.instance();
+  Interface* load(const QString &path) const
+  {
+    QPluginLoader loader(path);
+    QObject *plugin = loader.instance();
 
-  // TODO: It's needed add some logger object to register the bad path and an
-  // exception system.
-  assert(plugin != nullptr);
+    // TODO: It's needed add some logger object to register the bad path and an
+    // exception system.
+    assert(plugin != nullptr);
 
-  return qobject_cast<Interface*>(plugin);
-}
+    return qobject_cast<Interface*>(plugin);
+  }
+};
 } // namespace libs
 } // namespace mqg
 
-#endif // PLUGINGAMELOADER_H
+#endif // BASEPLUGINLOADER_H
