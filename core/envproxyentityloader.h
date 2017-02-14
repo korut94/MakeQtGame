@@ -2,6 +2,7 @@
 #define ENVPROXYENTITYLOADER_H
 
 #include <QObject>
+#include <QGraphicsItem>
 
 #include "entityloader.h"
 
@@ -28,6 +29,9 @@ public:
   explicit EnvProxyEntityLoader(EntityLoader &loader);
 
 public slots:
+  QGraphicsItem*  create(const QString &entity) const;
+
+  QStringList     list() const;
   /**
    * @brief Identical behavior to the EntityLoader counterpart but, since this
    * method is a slot, the environemnt can invoke it by the
@@ -36,7 +40,7 @@ public slots:
    * @return Return true if the load is performed successfully,
    * false otherwise.
    */
-  bool load(const QString &resourcePath);
+  bool            load(const QString &resourcePath);
 
 private:
   EntityLoader &m_loader;
