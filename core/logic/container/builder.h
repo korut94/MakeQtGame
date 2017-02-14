@@ -2,7 +2,6 @@
 #define BUILDER_H
 
 #include "container.h"
-#include "../abstractlogic.h"
 
 namespace mqg
 {
