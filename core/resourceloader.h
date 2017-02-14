@@ -21,7 +21,9 @@ class ResourceLoader
 public:
   explicit ResourceLoader(Store &store, const Loader &loader = Loader());
 
-  decltype(auto)  list()    const;
+  template <typename... Args>
+  decltype(auto)  create(const QString &resource, Args... arguments);
+  decltype(auto)  list() const;
   /**
    * @brief The method shoud instantiates the resource specified by the Loader
    * and stores it into the Store.
@@ -41,6 +43,14 @@ ResourceLoader<Store, Loader>::ResourceLoader(Store &store,
                                               const Loader &loader)
   : m_load(loader),
     m_store(store) {}
+
+template <typename Store, typename Loader>
+template <typename... Args>
+decltype(auto) ResourceLoader<Store, Loader>::create(const QString &resource,
+                                                     Args... arguments)
+{
+  return m_store.create(resource, arguments...);
+}
 
 template <typename Store, typename Loader>
 decltype(auto) ResourceLoader<Store, Loader>::list() const
