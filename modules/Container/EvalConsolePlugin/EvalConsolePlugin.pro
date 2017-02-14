@@ -10,6 +10,11 @@ QT += core \
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+# It's necessary to add the header and source files for the logic components,
+# how the below stackoverflow page suggestes, to avoid the undefined symbol
+# error:
+# http://stackoverflow.com/questions/14056149/qtplugin-cannot-load-library
+
 HEADERS += \
     evalconsoleplugin.h \
     lconsole.h \
