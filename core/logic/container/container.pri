@@ -3,7 +3,9 @@ HEADERS += \
     $$PWD/container.h \
     $$PWD/containerbook.h \
     $$PWD/loader.h \
-    $$PWD/dependencies.h
+    $$PWD/dependencies.h \
+    $$PWD/basecontainerparts.h \
+    $$PWD/containerparts.h
 
 SOURCES += \
     $$PWD/builder.cpp \
