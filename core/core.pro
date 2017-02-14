@@ -27,10 +27,8 @@ HEADERS += \
     entityinterface.h \
     entitybook.h \
     resourceloader.h \
-    abstractresourceloader.h \
     envproxyentityloader.h \
     loadplugingame.h \
-    abstractentityloader.h \
     entityloader.h \
     functionentityloader.h \
     type_list.h \
