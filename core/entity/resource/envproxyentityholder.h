@@ -10,6 +10,8 @@ namespace mqg
 {
 namespace Entity
 {
+namespace Resource
+{
 /**
  * @brief The EnvProxyEntityHolder class allow the control of an EntityHolder
  * instance inside the script environment. The EnvProxyEntityHolder is just
@@ -45,6 +47,7 @@ public slots:
 private:
   EntityHolder &m_holder;
 };
+} // namespace Resource
 } // namespace Entity
 } // namespace mqg
 

@@ -4,6 +4,8 @@ namespace mqg
 {
 namespace Entity
 {
+namespace Resource
+{
 EnvProxyEntityHolder::EnvProxyEntityHolder(EntityHolder &holder)
   : m_holder(holder) {}
 
@@ -21,5 +23,6 @@ bool EnvProxyEntityHolder::load(const QString &resourcePath)
 {
   return m_holder.load(resourcePath);
 }
+} // namespace Resource
 } // namespace Entity
 } // namespace mqg
