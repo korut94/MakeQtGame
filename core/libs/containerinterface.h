@@ -1,7 +1,7 @@
 #ifndef CONTAINERINTERFACE_H
 #define CONTAINERINTERFACE_H
 
-#include "logic/container/containerbook.h"
+#include "../logic/container/containerbook.h"
 
 namespace mqg
 {
