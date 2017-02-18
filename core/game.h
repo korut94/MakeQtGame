@@ -4,10 +4,10 @@
 #include <QApplication>
 #include <QScriptEngine>
 
-#include "envproxyentityholder.h"
-#include "logic/container/loader/envproxycontainerholder.h"
 #include "gamewindow.h"
 #include "world.h"
+#include "entity/resource/envproxyentityholder.h"
+#include "logic/container/resource/envproxycontainerholder.h"
 
 namespace mqg
 {
@@ -57,7 +57,7 @@ private:
    */
   static void shareEnvProxyEntityHolderOverEnv(
       QScriptEngine &engine,
-      Entity::EnvProxyEntityHolder &proxy);
+      Entity::Resource::EnvProxyEntityHolder &proxy);
 
   /**
    * @brief shareEnvProxyContainerHolderOverEnv
@@ -66,7 +66,7 @@ private:
    */
   static void shareEnvProxyContainerHolderOverEnv(
       QScriptEngine &engine,
-      Logic::Container::Loader::EnvProxyContainerHolder &proxy);
+      Logic::Container::Resource::EnvProxyContainerHolder &proxy);
 
   /**
    * @brief Load the GameWindow over the environemnt.
