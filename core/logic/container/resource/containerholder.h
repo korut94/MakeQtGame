@@ -1,8 +1,8 @@
 #ifndef CONTAINERHOLDER_H
 #define CONTAINERHOLDER_H
 
-#include "../../../basepluginloader.h"
-#include "../../../containerinterface.h"
+#include "../../../libs/basepluginloader.h"
+#include "../../../libs/containerinterface.h"
 #include "../../../resourceholder.h"
 #include "../containerbook.h"
 
@@ -12,13 +12,13 @@ namespace Logic
 {
 namespace Container
 {
-namespace Loader
+namespace Resource
 {
 using ContainerHolder = ResourceHolder<
   ContainerBook,
   libs::BasePluginLoader<libs::ContainerInterface>
 >;
-} // namespace Loader
+} // namespace Resource
 } // namespace Container
 } // namespace Logic
 } // namespace mqg

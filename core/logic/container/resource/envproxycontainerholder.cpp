@@ -6,7 +6,7 @@ namespace Logic
 {
 namespace Container
 {
-namespace Loader
+namespace Resource
 {
 EnvProxyContainerHolder::EnvProxyContainerHolder(ContainerHolder &holder)
   : m_holder(holder) {}
@@ -26,7 +26,7 @@ bool EnvProxyContainerHolder::load(const QString &resourcePath)
 {
   return m_holder.load(resourcePath);
 }
-} // namespace Loader
+} // namespace Resource
 } // namespace Container
 } // namespace Logic
 } // namespace mqg

@@ -13,7 +13,7 @@ namespace Logic
 {
 namespace Container
 {
-namespace Loader
+namespace Resource
 {
 class EnvProxyContainerHolder : public QObject
 {
@@ -31,7 +31,7 @@ public slots:
 private:
   ContainerHolder &m_holder;
 };
-} // namespace Loader
+} // namespace Resource
 } // namespace Container
 } // namespace Logic
 } // namespace mqg
