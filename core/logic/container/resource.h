@@ -1,9 +1,7 @@
-#ifndef LOADER_H
-#define LOADER_H
+#ifndef RESOURCE_H
+#define RESOURCE_H
 
-#include "loader/abstractcontainerloader.h"
 #include "loader/containerholder.h"
 #include "loader/envproxycontainerholder.h"
-#include "loader/fcontainerloader.h"
 
-#endif // LOADER_H
+#endif // RESOURCE_H
