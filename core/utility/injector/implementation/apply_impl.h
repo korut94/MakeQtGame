@@ -1,5 +1,5 @@
-#ifndef APPLY_H
-#define APPLY_H
+#ifndef APPLY_IMPL_H
+#define APPLY_IMPL_H
 
 #include <tuple>
 
@@ -19,16 +19,8 @@ constexpr decltype(auto) apply_impl(const F &f,
   return f(std::get<I>(t)...);
 }
 } // namespace Implementation
-
-template <typename F, typename... Args>
-constexpr decltype(auto) apply(const F &f, const std::tuple<Args...> &t)
-{
-  return
-      Implementation::apply_impl(f, t,
-                                 std::make_index_sequence<sizeof...(Args)>());
-}
 } // namespace Injector
 } // namespace Utility
 } // namespace mqg
 
-#endif // APPLY_H
+#endif // APPLY_IMPL_H
