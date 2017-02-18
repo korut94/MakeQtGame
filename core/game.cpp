@@ -1,13 +1,11 @@
 #include <QDebug>
 #include <QFile>
 
-#include "entityholder.h"
-#include "logic/container/loader/containerholder.h"
 #include "game.h"
+#include "entity/resource/entityholder.h"
+#include "logic/container/resource/containerholder.h"
 
 #define BOOTSTRAPPER_PATH ":/mqg/core/bootstrapper.js"
-
-#include "logic/container/container.h"
 
 namespace mqg
 {
@@ -23,6 +21,12 @@ void Game::bootstrapping(QScriptEngine &engine)
   assert(!payload.isEmpty());
 
   engine.evaluate(QScriptProgram(payload));
+
+  if (engine.hasUncaughtException()) {
+    throw std::runtime_error(engine.uncaughtException()
+                             .toString()
+                             .toStdString());
+  }
 }
 
 QScriptValue Game::import(QScriptContext *context, QScriptEngine *engine)
@@ -44,17 +48,17 @@ QScriptValue Game::import(QScriptContext *context, QScriptEngine *engine)
 
 void Game::shareEnvProxyContainerHolderOverEnv(
     QScriptEngine &engine,
-    Logic::Container::Loader::EnvProxyContainerHolder &proxy)
+    Logic::Container::Resource::EnvProxyContainerHolder &proxy)
 {
-  engine.globalObject().setProperty("_containerLoader",
+  engine.globalObject().setProperty("_containers",
                                     engine.newQObject(&proxy));
 }
 
 void Game::shareEnvProxyEntityHolderOverEnv(
     QScriptEngine &engine,
-    Entity::EnvProxyEntityHolder &proxy)
+    Entity::Resource::EnvProxyEntityHolder &proxy)
 {
-  engine.globalObject().setProperty("_entityLoader",
+  engine.globalObject().setProperty("_entities",
                                     engine.newQObject(&proxy));
 }
 
@@ -78,10 +82,10 @@ void Game::shareImportOverEnv(QScriptEngine &engine)
 
 int Game::exec()
 {
-  using Entity::EntityHolder;
-  using Entity::EnvProxyEntityHolder;
-  using Logic::Container::Loader::ContainerHolder;
-  using Logic::Container::Loader::EnvProxyContainerHolder;
+  using Entity::Resource::EntityHolder;
+  using Entity::Resource::EnvProxyEntityHolder;
+  using Logic::Container::Resource::ContainerHolder;
+  using Logic::Container::Resource::EnvProxyContainerHolder;
 
   QScriptEngine engine;
 
@@ -101,11 +105,8 @@ int Game::exec()
 
   bootstrapping(engine);
 
-  Logic::Container::Container* c =
-      proxyContainerHolder.create("EvalConsole", {window.console(), &engine});
-
-  QGraphicsItem *b = proxyEntityHolder.create("BoxMan");
-  world.addItem(b);
+  proxyContainerHolder.create("EvalConsole", {window.console(), &engine});
+  world.addItem(proxyEntityHolder.create("BoxMan"));
 
   window.show();
 
