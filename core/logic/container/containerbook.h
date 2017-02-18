@@ -5,8 +5,8 @@
 
 #include <QMap>
 
-#include "../../apply.h"
-#include "../../extract.h"
+#include "../../utility/injector/apply.h"
+#include "../../utility/injector/extract.h"
 #include "builder.h"
 #include "container.h"
 #include "containerparts.h"
