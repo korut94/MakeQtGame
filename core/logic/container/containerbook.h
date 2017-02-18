@@ -3,14 +3,14 @@
 
 #include <functional>
 
-#include <QDebug>
 #include <QMap>
-#include <QObject>
 
-#include "../../apply.h"
-#include "../../extract.h"
-#include "container.h"
+#include "../../utility/injector/apply.h"
+#include "../../utility/injector/extract.h"
 #include "builder.h"
+#include "container.h"
+#include "containerparts.h"
+#include "dependencies.h"
 
 namespace mqg
 {
@@ -18,11 +18,9 @@ namespace Logic
 {
 namespace Container
 {
-using Dependencies = std::vector<QObject*>;
-
 class ContainerBook
 {
-  using Writer = std::function<void(Builder*, const Dependencies&)>;
+  using Factory = std::function<Container*(const Dependencies&)>;
 
 public:
   Container*  create(const QString &container,
@@ -32,33 +30,32 @@ public:
 
   template <typename... Args>
   void registerContainer(const QString &name,
-                         void (*body)(Builder*, Args...));
+                         void (*body)(ContainerParts&, Args...));
 
 private:
-  QMap<QString, Writer> m_registerWriter;
+  QMap<QString, Factory> m_registerFactory;
 };
 
 template <typename... Args>
 void ContainerBook::
 registerContainer(const QString &name,
-                  void (*body)(Builder*, Args...))
+                  void (*body)(ContainerParts&, Args...))
 {
   using Utility::Injector::extract;
   using Utility::Injector::apply;
 
-  // Encounter error: before the builder was created inside the factory and
-  // concateneted with the dependencies tuple. However the compiler threw a
-  // `symbol lookup error` said that the constructor and the build method had
-  // an undefined symbol. For this reason now the builder is passed as
-  // argument.
-  m_registerWriter[name] = [body] (Builder *builder,
-                                   const Dependencies &dependencies)
+  m_registerFactory[name] = [body] (const Dependencies &dependencies)
   {
-    std::tuple<Builder*, Args...> args =
-        std::tuple_cat(std::make_tuple(builder),
+    Builder builder;
+    ContainerParts parts(builder);
+
+    std::tuple<ContainerParts&, Args...> args =
+        std::tuple_cat(std::tie(parts),
                        extract<Args...>(dependencies.begin()));
 
     apply(body, args);
+
+    return builder.build();
   };
 }
 } // namespace Container

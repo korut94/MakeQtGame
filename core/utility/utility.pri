@@ -1,0 +1,1 @@
+include(injector/injector.pri)

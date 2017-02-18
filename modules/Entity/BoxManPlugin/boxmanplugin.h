@@ -3,8 +3,7 @@
 
 #include <QObject>
 
-#include "core/entityinterface.h"
-#include "core/entitybook.h"
+#include "core/libs/entityinterface.h"
 
 namespace mqggame
 {

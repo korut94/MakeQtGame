@@ -1,7 +1,7 @@
 #ifndef ENTITYINTERFACE_H
 #define ENTITYINTERFACE_H
 
-#include "entitybook.h"
+#include "../entity/entitybook.h"
 
 namespace mqg
 {
@@ -36,8 +36,6 @@ namespace libs
 class EntityInterface
 {
 public:
-  virtual ~EntityInterface() {}
-
   virtual void saveIn(Entity::EntityBook &book) const = 0;
 };
 } // namespace libs

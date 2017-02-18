@@ -3,35 +3,22 @@
 
 #include <functional>
 
+#include <QGraphicsItem>
 #include <QMap>
-#include <QObject>
-#include <QScriptContext>
-#include <QScriptEngine>
-
-#include "world.h"
 
 namespace mqg
 {
 namespace Entity
 {
-using Factory = std::function<QGraphicsItem*()>;
-
 /**
  * @brief The EntityBook class registers all the entities of the game keeping
  * a list of their name.
  */
-class EntityBook : public QObject
+class EntityBook
 {
-  Q_OBJECT
+  using Factory = std::function<QGraphicsItem*()>;
 
 public:
-  // Simple wrapper fore create and list so to use them in the script
-  // enviromnemt
-  static QScriptValue wrapperCreate(QScriptContext *context,
-                                    QScriptEngine *engine);
-  static QScriptValue wrapperList(QScriptContext *context,
-                                  QScriptEngine *engine);
-
   /**
    * @brief This method create an istance of the entity thas has as name the
    * value passed by argument. If no entity match with the specified name a
@@ -39,7 +26,7 @@ public:
    * @param The entity's name.
    * @return An pointer to entity instance.
    */
-  QGraphicsItem*  create(const QString &entity);
+  QGraphicsItem*  create(const QString &entity) const;
   /**
    * @brief Get the list of the registered entities until now.
    * @return A string list with the name.
@@ -53,13 +40,6 @@ public:
    */
   template <typename Entity>
   void            registerEntity(const QString &name);
-
-signals:
-  /**
-   * @brief Signal emitted when the user create a new instance of an entity.
-   * @param The pointer to new entity.
-   */
-  void entityCreated(QGraphicsItem *entity);
 
 private:
   QMap<QString, Factory>  m_registerFactory;

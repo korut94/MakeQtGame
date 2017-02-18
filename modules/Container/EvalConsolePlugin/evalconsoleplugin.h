@@ -1,7 +1,7 @@
 #ifndef EVALCONSOLEPLUGIN_H
 #define EVALCONSOLEPLUGIN_H
 
-#include "core/containerinterface.h"
+#include "core/libs/containerinterface.h"
 
 namespace mqggame
 {

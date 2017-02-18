@@ -14,31 +14,19 @@ SOURCES += \
     game.cpp \
     world.cpp \
     console.cpp \
-    gamewindow.cpp \
-    entitybook.cpp \
-    envproxyentityloader.cpp
+    gamewindow.cpp
 
 HEADERS += \
     game.h \
     world.h \
     console.h \
     gamewindow.h \
-    singleton.h \
-    entityinterface.h \
-    entitybook.h \
-    resourceloader.h \
-    abstractresourceloader.h \
-    envproxyentityloader.h \
-    loadplugingame.h \
-    abstractentityloader.h \
-    entityloader.h \
-    functionentityloader.h \
-    type_list.h \
-    extract.h \
-    apply.h \
-    containerinterface.h
+    resourceholder.h
 
 RESOURCES += \
     resources.qrc
 
+include(entity/entity.pri)
+include(libs/libs.pri)
 include(logic/logic.pri)
+include(utility/utility.pri)

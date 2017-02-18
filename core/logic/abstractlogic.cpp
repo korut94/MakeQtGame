@@ -1,7 +1,6 @@
 #include <assert.h>
 
 #include "abstractlogic.h"
-#include "start.h"
 
 namespace mqg
 {
@@ -9,7 +8,12 @@ namespace Logic
 {
 void AbstractLogic::startContainer()
 {
-  start(this);
+  AbstractLogic* current = this;
+
+  while (current != nullptr) {
+    current->run();
+    current = current->getNext();
+  }
 }
 } // namespace Logic
 } // namespace mqg

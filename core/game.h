@@ -4,11 +4,10 @@
 #include <QApplication>
 #include <QScriptEngine>
 
-#include "envproxyentityloader.h"
-#include "entitybook.h"
-#include "logic/container/loader/envproxycontainerloader.h"
 #include "gamewindow.h"
 #include "world.h"
+#include "entity/resource/envproxyentityholder.h"
+#include "logic/container/resource/envproxycontainerholder.h"
 
 namespace mqg
 {
@@ -33,10 +32,7 @@ public:
    * @return Return the game state's code
    */
   int exec();
-/*
-private slots:
-  void eval(QString expression);
-*/
+
 private:
   /**
    * @brief Start the bootstrapping phase to load environment's extensions and
@@ -55,30 +51,22 @@ private:
   static QScriptValue import(QScriptContext *context, QScriptEngine *engine);
 
   /**
-   * @brief Load the EntityBook over the environemnt.
+   * @brief Load the EnvProxyEntityHolder over the environemnt.
    * @param The engine that provides the script environment.
-   * @param The EntityBook instance to load into the environment
+   * @param The EnvProxyEntityHolder instance to load into the environment
    */
-  static void shareEntityBookOverEnv(QScriptEngine &engine,
-                                     Entity::EntityBook &book);
-
-  /**
-   * @brief Load the EnvProxyEntityLoader over the environemnt.
-   * @param The engine that provides the script environment.
-   * @param The EnvProxyEntityLoader instance to load into the environment
-   */
-  static void shareEnvProxyEntityLoaderOverEnv(
+  static void shareEnvProxyEntityHolderOverEnv(
       QScriptEngine &engine,
-      Entity::EnvProxyEntityLoader &proxy);
+      Entity::Resource::EnvProxyEntityHolder &proxy);
 
   /**
-   * @brief shareEnvProxyContainerLoaderOverEnv
+   * @brief shareEnvProxyContainerHolderOverEnv
    * @param engine
    * @param proxy
    */
-  static void shareEnvProxyContainerLoaderOverEnv(
+  static void shareEnvProxyContainerHolderOverEnv(
       QScriptEngine &engine,
-      Logic::Container::Loader::EnvProxyContainerLoader &proxy);
+      Logic::Container::Resource::EnvProxyContainerHolder &proxy);
 
   /**
    * @brief Load the GameWindow over the environemnt.
