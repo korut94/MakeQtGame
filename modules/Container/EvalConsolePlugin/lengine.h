@@ -1,11 +1,10 @@
 #ifndef LENGINE_H
 #define LENGINE_H
 
-#include <functional>
-
 #include <QScriptEngine>
 
 #include "core/logic/unit.h"
+#include "core/logic/var.h"
 
 namespace mqggame
 {
@@ -18,13 +17,13 @@ class LEngine : public mqg::Logic::Unit
 public:
   LEngine(QScriptEngine* engine);
 
-  void toEval(const std::function<QString()> &expression);
+  void toEval(const mqg::Logic::Var<QString> &expression);
 
 private:
   void run() override;
 
-  QScriptEngine            *m_engine;
-  std::function<QString()>  m_expression;
+  QScriptEngine             *m_engine;
+  mqg::Logic::Var<QString>   m_expression;
 };
 } // namespace EvalConsole
 } // namespace Container

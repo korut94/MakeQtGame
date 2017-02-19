@@ -14,7 +14,7 @@ LEngine::LEngine(QScriptEngine *engine)
 
 void LEngine::run()
 {
-  QScriptValue result = m_engine->evaluate(m_expression());
+  QScriptValue result = m_engine->evaluate(*m_expression);
 
   if (m_engine->hasUncaughtException()) {
     qDebug() << m_engine->uncaughtException().toString();
@@ -24,7 +24,7 @@ void LEngine::run()
   }
 }
 
-void LEngine::toEval(const std::function<QString()> &expression)
+void LEngine::toEval(const mqg::Logic::Var<QString> &expression)
 {
   m_expression = expression;
 }
