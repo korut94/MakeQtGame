@@ -51,6 +51,12 @@ private:
   static QScriptValue import(QScriptContext *context, QScriptEngine *engine);
 
   /**
+   * @brief shareEngineOverEnv
+   * @param engine
+   */
+  static void shareEngineOverEnv(QScriptEngine &engine);
+
+  /**
    * @brief Load the EnvProxyEntityHolder over the environemnt.
    * @param The engine that provides the script environment.
    * @param The EnvProxyEntityHolder instance to load into the environment

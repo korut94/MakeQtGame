@@ -46,6 +46,11 @@ QScriptValue Game::import(QScriptContext *context, QScriptEngine *engine)
   return !status.isError();
 }
 
+void Game::shareEngineOverEnv(QScriptEngine &engine)
+{
+  engine.globalObject().setProperty("_engine", engine.newQObject(&engine));
+}
+
 void Game::shareEnvProxyContainerHolderOverEnv(
     QScriptEngine &engine,
     Logic::Container::Resource::EnvProxyContainerHolder &proxy)
@@ -98,6 +103,7 @@ int Game::exec()
   World world;
   GameWindow window(world);
 
+  shareEngineOverEnv(engine);
   shareEnvProxyContainerHolderOverEnv(engine, proxyContainerHolder);
   shareEnvProxyEntityHolderOverEnv(engine, proxyEntityHolder);
   shareGameWindowOverEnv(engine, window);
@@ -105,8 +111,8 @@ int Game::exec()
 
   bootstrapping(engine);
 
-  proxyContainerHolder.create("EvalConsole", {window.console(), &engine});
-  world.addItem(proxyEntityHolder.create("BoxMan"));
+  // proxyContainerHolder.create("EvalConsole", {window.console(), &engine});
+  // world.addItem(proxyEntityHolder.create("BoxMan"));
 
   window.show();
 
