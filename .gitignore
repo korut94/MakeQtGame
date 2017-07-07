@@ -5,4 +5,4 @@
 
 # Qt compilation output
 *.pro.user
-
+*.qmlc
