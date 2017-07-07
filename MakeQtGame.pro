@@ -4,17 +4,16 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       += quick qml
 
 TARGET = MakeQtGame
 TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    game.cpp
+    backend.cpp
 
 HEADERS += \
-    game.h
+    backend.h
+RESOURCES += mqg.qrc
 
