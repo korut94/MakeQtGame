@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/mqg">
+        <file>application/main.qml</file>
+        <file>application/component/Console.qml</file>
+    </qresource>
+</RCC>
