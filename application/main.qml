@@ -3,7 +3,7 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts  1.3
 import QtQuick.Window   2.2
 
-import mqg.Core.BackEnd 1.0
+import mqg.Core.Engine 1.0
 
 import "component"
 
@@ -38,8 +38,12 @@ Window {
         }
     }
 
-    BackEnd {
+    Engine {
+        onErrorOccurred: console.log(error)
+
         Component.onCompleted: {
+            setGlobalObject("mqg_console", mqg_console);
+
             mqg_console.submit.connect(evaluate)
         }
     }

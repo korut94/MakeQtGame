@@ -5,6 +5,14 @@ import QtQuick.Layouts  1.3
 Item {
     signal submit(string command)
 
+    function log(msg) {
+        mqg_console_log.append(msg)
+    }
+
+    function count() {
+        mqg_console_log.append(4)
+    }
+
     ColumnLayout {
         id: mqg_console_layout
 
@@ -24,6 +32,7 @@ Item {
 
                 Keys.onReturnPressed: {
                     mqg_console.submit(mqg_console_input.text)
+                    clear()
                 }
             }
         }
