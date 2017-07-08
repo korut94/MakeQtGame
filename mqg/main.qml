@@ -4,7 +4,7 @@ import QtQuick.Layouts  1.3
 import QtQuick.Window   2.2
 
 import mqg.Core         1.0
-import mqg.Component    1.0
+import mqg.GUI          1.0
 
 Window {
     id: window
