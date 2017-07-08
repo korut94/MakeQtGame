@@ -1,0 +1,5 @@
+module mqg.GUI
+
+Console 1.0 console.qml
+
+typeinfo gui.qmltypes
