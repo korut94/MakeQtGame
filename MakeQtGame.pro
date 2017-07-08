@@ -11,9 +11,9 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    backend.cpp
+    engine.cpp
 
 HEADERS += \
-    backend.h
+    engine.h
 RESOURCES += mqg.qrc
 
