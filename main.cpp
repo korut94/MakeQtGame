@@ -7,10 +7,10 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<mqg::Engine>("mqg.Core.Engine", 1, 0, "Engine");
+    qmlRegisterType<mqg::Engine>("mqg.Core", 1, 0, "Engine");
 
     QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:///mqg/application/main.qml")));
+    engine.load(QStringLiteral("qrc:/qt-project.org/imports/mqg/main.qml"));
 
     return app.exec();
 }
