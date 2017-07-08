@@ -9,11 +9,11 @@ QT       += quick qml
 TARGET = MakeQtGame
 TEMPLATE = app
 
-
 SOURCES += main.cpp \
     engine.cpp
 
 HEADERS += \
     engine.h
+
 RESOURCES += mqg.qrc
 
