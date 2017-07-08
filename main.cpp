@@ -1,13 +1,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include "backend.h"
+#include "engine.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<mqg::BackEnd>("mqg.Core.BackEnd", 1, 0, "BackEnd");
+    qmlRegisterType<mqg::Engine>("mqg.Core.Engine", 1, 0, "Engine");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:///mqg/application/main.qml")));
