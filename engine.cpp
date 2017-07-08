@@ -1,16 +1,26 @@
 #include <QtQml>
 #include <QQmlEngine>
 
-#include "backend.h"
+#include "engine.h"
 
 namespace mqg
 {
-BackEnd::BackEnd(QObject *parent)
+Engine::Engine(QObject *parent)
   : QObject(parent) {}
 
-void BackEnd::evaluate(const QString &program)
+void Engine::evaluate(const QString &program)
 {
   QQmlEngine *engine = qmlEngine(this);
-  engine->evaluate(program);
+  QJSValue result = engine->evaluate(program);
+
+  if (result.isError()) {
+    emit errorOccurred(result);
+  }
+}
+
+void Engine::setGlobalObject(const QString &objectName, QObject *object) const
+{
+  QQmlEngine *engine = qmlEngine(this);
+  engine->globalObject().setProperty(objectName, engine->newQObject(object));
 }
 } // namespace mqg
