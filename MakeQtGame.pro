@@ -10,10 +10,11 @@ TARGET = MakeQtGame
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    engine.cpp
+    engine.cpp \
+    environment.cpp
 
 HEADERS += \
-    engine.h
+    engine.h \
+    environment.h
 
 RESOURCES += mqg.qrc
-
