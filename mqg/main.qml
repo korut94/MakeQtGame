@@ -17,6 +17,8 @@ Window {
     RowLayout {
         id: window_layout
 
+        spacing: 0
+
         anchors.fill: parent
 
         Rectangle {
@@ -38,12 +40,20 @@ Window {
     }
 
     Engine {
+        id: engine
+
+        env: Environment {
+            readonly property var close: function () { window.close() }
+            readonly property var out: mqg_console
+            readonly property var window: window
+        }
+
         onErrorOccurred: console.log(error)
 
         Component.onCompleted: {
-            setGlobalObject("mqg_console", mqg_console);
-
             mqg_console.submit.connect(evaluate)
+
+            loadEnvironment()
         }
     }
 }
