@@ -29,18 +29,54 @@ Item {
             }
         }
 
-        ScrollView {
+        ListView {
             id: mqg_view_console_log
 
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            TextArea {
-                id: mqg_console_log
+            spacing: 5
 
-                readOnly: true
-                textFormat: TextArea.RichText
-                wrapMode: TextArea.Wrap
+            model: ListModel {
+                ListElement {
+                    message: "ci siamo"
+                    type: "debug"
+                }
+
+                ListElement {
+                    message: "era orasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+                    type: "error"
+                }
+            }
+
+            delegate: Rectangle {
+                id: background
+
+                color: "#FF9999"
+                width: mqg_view_console_log.width
+                height: msg.height
+
+                Row {
+                    Rectangle {
+                        color: "#FF3333"
+                        height: msg.height
+                        radius: 2
+                        width: 12
+                    }
+
+                    Text {
+                        id: msg
+
+                        color: "#550000"
+
+                        font.pointSize: 11
+                        leftPadding: 10
+                        rightPadding: 20
+                        text: message
+                        width: background.width
+                        wrapMode: Text.Wrap
+                    }
+                }
             }
         }
     }
