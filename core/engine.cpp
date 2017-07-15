@@ -5,8 +5,15 @@
 
 namespace mqg
 {
+namespace Core
+{
 Engine::Engine(QObject *parent)
-  : QObject(parent) {}
+  : QObject(parent), m_environment(nullptr) {}
+
+Environment* Engine::environment() const
+{
+  return m_environment;
+}
 
 void Engine::evaluate(const QString &program)
 {
@@ -18,9 +25,15 @@ void Engine::evaluate(const QString &program)
   }
 }
 
-void Engine::setGlobalObject(const QString &objectName, QObject *object) const
+void Engine::loadEnvironment() const
 {
-  QQmlEngine *engine = qmlEngine(this);
-  engine->globalObject().setProperty(objectName, engine->newQObject(object));
+  m_environment->loadContext(qmlEngine(this));
 }
+
+void Engine::setEnvironment(Environment *env)
+{
+  m_environment = env;
+  m_environment->setParent(this);
+}
+} // namespace Core
 } // namespace mqg
