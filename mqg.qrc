@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/qt-project.org/imports">
-        <file>mqg/main.qml</file>
-        <file>mqg/GUI/console.qml</file>
-        <file>mqg/GUI/qmldir</file>
-        <file>mqg/GUI/gui.qmltypes</file>
-    </qresource>
-</RCC>
