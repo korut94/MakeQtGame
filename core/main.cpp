@@ -7,8 +7,9 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    qmlRegisterType<mqg::Core::Engine>("mqg.Core", 1,0, "Engine");
-    qmlRegisterType<mqg::Core::Environment>("mqg.Core", 1,0, "Environment");
+    qmlRegisterType<mqg::Core::Engine>("mqg.Core.Engine", 1,0, "Engine");
+    qmlRegisterType<mqg::Core::Environment>("mqg.Core.Engine", 1,0,
+                                            "Environment");
 
     QQmlApplicationEngine engine;
     engine.load(QStringLiteral("qrc:/main.qml"));
