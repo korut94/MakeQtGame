@@ -6,7 +6,7 @@ Item {
 
     property var result
 
-    height: childrenRect.height
+    height: content.height
 
     states: State {
         name: "withResultValue"
@@ -14,26 +14,20 @@ Item {
 
         PropertyChanges {
             target: alert
-            Layout.bottomMargin: 0
             text: "<b>" + qsTr("Done") + "!</b> "
                   + qsTr("As result")
                   + " <i>" + typeof container.result + "</i>"
         }
 
         PropertyChanges {
-            target: body_result
-            visible: true
-        }
-
-        PropertyChanges {
-            target: text_result
-            text: JSON.stringify(container.result)
+            target: load
+            sourceComponent: text_result
         }
     }
 
     RowLayout {
+        anchors.fill: parent
         spacing: 0
-        width: parent.width
 
         Rectangle {
             id: border
@@ -45,51 +39,44 @@ Item {
         }
 
         Rectangle {
+            Layout.fillHeight: true
             Layout.fillWidth: true
 
             color: "#dff0d8"
-            height: childrenRect.height
 
-            ColumnLayout {
+            Column {
                 id: content
 
-                readonly property int margin: 7
-
+                padding: 7
                 spacing: 3
                 width: parent.width
 
                 Text {
                     id: alert
 
-                    Layout.fillWidth: true
-                    Layout.margins: parent.margin
-
                     color: "#3c763d"
                     font.pointSize: 10
                     text: "<b>" + qsTr("Done") + "!</b>"
                 }
 
-                Rectangle {
-                    id: body_result
+                Loader { id: load }
 
-                    // Don't show the item until a result value is proved
-                    visible: false
+                Component {
+                    id: text_result
 
-                    Layout.bottomMargin: parent.margin
-                    Layout.fillWidth: true
-                    Layout.leftMargin: parent.margin
-                    Layout.rightMargin: parent.margin
+                    Rectangle {
+                        color: "#e8f5e9"
+                        height: childrenRect.height
+                        width: childrenRect.width
 
-                    color: "#e8f5e9"
-                    height: childrenRect.height
-                    radius: 5
-
-                    Text {
-                        id: text_result
-
-                        padding: 5
-                        width: parent.width
-                        wrapMode: Text.Wrap
+                        Text {
+                            padding: 5
+                            text: JSON.stringify(container.result)
+                            width: content.width
+                                   - content.leftPadding
+                                   - content.rightPadding
+                            wrapMode: Text.Wrap
+                        }
                     }
                 }
             }
