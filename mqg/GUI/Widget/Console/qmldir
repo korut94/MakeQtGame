@@ -1,2 +1,13 @@
 module mqg.GUI.Widget.Console
-Console 1.0 console.qml
+
+Console 1.0 Console.qml
+
+internal  Badge       Badge.qml
+internal  Command     Command.qml
+internal  Error       Error.qml
+internal  Header      Header.qml
+internal  Job         Job.qml
+internal  Log         Log.qml
+internal  OutputLine  OutputLine.qml
+internal  Result      Result.qml
+internal  Warning     Warning.qml
