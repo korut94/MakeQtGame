@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.3
 Item {
     id: container
 
-    property var result
+    readonly property var result : model.result
 
     height: content.height
 
@@ -15,8 +15,8 @@ Item {
         PropertyChanges {
             target: alert
             text: "<b>" + qsTr("Done") + "!</b> "
-                  + qsTr("As result")
-                  + " <i>" + typeof container.result + "</i>"
+                  + qsTr("Result") + ": "
+                  + "<i>" + typeof container.result + "</i>"
         }
 
         PropertyChanges {
@@ -66,12 +66,16 @@ Item {
 
                     Rectangle {
                         color: "#e8f5e9"
-                        height: childrenRect.height
-                        width: childrenRect.width
+                        height: result.height
+                        radius: 5
+                        width: result.width
 
                         Text {
+                            id: result
+
+                            color: "#1b5e20"
                             padding: 5
-                            text: JSON.stringify(container.result)
+                            text: stringify(container.result)
                             width: content.width
                                    - content.leftPadding
                                    - content.rightPadding
@@ -80,6 +84,14 @@ Item {
                     }
                 }
             }
+        }
+    }
+
+    function stringify(value) {
+        if (typeof value !== "object") {
+            return String(value)
+        } else {
+            return JSON.stringify(value, null, 4).replace(/\"(.*)\":/g, "$1:")
         }
     }
 }
