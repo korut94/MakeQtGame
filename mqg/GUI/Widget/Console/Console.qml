@@ -52,17 +52,24 @@ Item {
 
             Component.onCompleted: {
                 console_output_model.append({
-                    command: "Any valid command",
+                    command: "mqg.window.setShowFullScreen()",
                     log: [
-                        // { msg: "1" },
-                        // { msg: "2" },
-                        // { msg: "3" }
+                        { message: "1 smfsdpmfmpsdomfsdopfmsdpofmsdpofmsdpofmspdo" },
+                        { message: "2" },
+                        { message: "3" }
                     ],
                     warning: [
-                        { msg: "Division by zero" }
+                        { message: "Division by zero" }
                     ],
-                    error: undefined,
-                    result: { x:12, y:23, message:"Ehi ma che ho!!!" }
+                    status: "error",
+                    error: {
+                        name: "SyntaxError",
+                        message: "Expected token `identifier`",
+                        fileName: "file:///home/andreamnt94/Project/MakeQtGame/build-MakeQtGame-Desktop-Profile/mqg/GUI/Widget/Console/Console.qml",
+                        lineNumber: 1,
+                        stack: "file:///home/andreamnt94/Project/MakeQtGame/build-MakeQtGame-Desktop-Profile/mqg/GUI/Widget/Console/Console.qml"
+                    },
+                    result: "(90 + 34 * 76) / 2  = " + (90 + 34 * 76) / 2
                 })
             }
         }
