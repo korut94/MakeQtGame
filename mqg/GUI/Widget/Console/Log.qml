@@ -1,40 +1,39 @@
 import QtQuick 2.9
-import QtQuick.Layouts 1.3
 
 Item {
     id: container
 
-    property var logMessages
+    readonly property var logMessages : model.log
 
-    height: logContent.contentHeight
+    height: content.height
 
-    RowLayout {
-        anchors.fill: parent
+    Row {
+        id: content
+
         spacing: 0
+        width: parent.width
 
         Rectangle {
             id: border
 
-            Layout.fillHeight: true
-            Layout.preferredWidth: 6
-
             color: "#000099"
+            height: logList.height
+            width: 6
         }
 
         ListView {
-            id: logContent
-
-            Layout.fillWidth: true
+            id: logList
 
             height: contentHeight
             model: logMessages
+            width: parent.width - border.width
 
             delegate: Component {
                 OutputLine {
-                    backgroundColor: "#bbbbff"
+                    color: "#bbbbff"
                     textColor: "#000066"
-                    message: model.msg
-                    width: logContent.width
+                    message: model.message
+                    width: logList.width
                 }
             }
 
@@ -49,7 +48,7 @@ Item {
                     GradientStop { position: 1; color: "#6666ff" }
                 }
                 title: "Logging"
-                width: logContent.width
+                width: logList.width
             }
         }
     }
