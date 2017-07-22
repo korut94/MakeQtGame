@@ -1,17 +1,35 @@
 import QtQuick 2.9
 
 Rectangle {
-    property string command
+    id: background
 
     height: title.height
-    color: "#C0C0C0"
+
+    states: [
+        State {
+            name: "error"
+            PropertyChanges {
+                target: background
+                color: "#dd0000"
+            }
+        },
+        State {
+            name: "success"
+            PropertyChanges {
+                target: background
+                color: "#00c853"
+            }
+        }
+    ]
 
     Text {
         id: title
 
-        bottomPadding: 5
-        leftPadding: 5
-        text: "<b> > </b> " + command
-        topPadding: 5
+        color: "white"
+        font.weight: Font.DemiBold
+        padding: 5
+        width: parent.width
+        text: model.command
+        wrapMode: Text.Wrap
     }
 }
