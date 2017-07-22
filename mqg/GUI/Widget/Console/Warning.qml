@@ -1,45 +1,44 @@
 import QtQuick 2.9
-import QtQuick.Layouts 1.3
 
 Item {
     id: container
 
-    property var warnMessages
+    readonly property var warningMessages : model.warning
 
-    height: warnContent.contentHeight
+    height: content.height
 
-    RowLayout {
-        anchors.fill: parent
+    Row {
+        id: content
+
         spacing: 0
+        width: parent.width
 
         Rectangle {
             id: border
 
-            Layout.fillHeight: true
-            Layout.preferredWidth: 6
-
             color: "#ff9800"
+            height: warningList.height
+            width: 6
         }
 
         ListView {
-            id: warnContent
-
-            Layout.fillWidth: true
+            id: warningList
 
             height: contentHeight
-            model: warnMessages
+            model: warningMessages
+            width: parent.width - border.width
 
             delegate: Component {
                 OutputLine {
-                    backgroundColor: "#fffacd"
+                    color: "#fffacd"
                     textColor: "#ff3f00"
-                    message: model.msg
-                    width: warnContent.width
+                    message: model.message
+                    width: warningList.width
                 }
             }
 
             header: Header {
-                amount: warnMessages.count
+                amount: warningMessages.count
                 gradient: Gradient {
                     GradientStop { position: 0; color: "#fdd835" }
                     GradientStop { position: 1; color: "#f9a825" }
@@ -49,7 +48,7 @@ Item {
                     GradientStop { position: 1; color: "#fdd835" }
                 }
                 title: "Warning"
-                width: warnContent.width
+                width: warningList.width
             }
         }
     }
