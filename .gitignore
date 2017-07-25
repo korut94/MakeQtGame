@@ -1,9 +1,12 @@
 # Temporary files
-*.*~
+*~*
 *#*
 .directory
 
-# Qt compilation output
+# Qt and QtCreator
 *.autosave
 *.pro.user
 *.qmlc
+
+# Doxygen
+documentation/
