@@ -4,5 +4,6 @@
 .directory
 
 # Qt compilation output
+*.autosave
 *.pro.user
 *.qmlc
