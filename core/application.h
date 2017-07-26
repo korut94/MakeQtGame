@@ -122,7 +122,7 @@ public:
   /*!
    * Sets the service provider *service* to supply the scripting service.
    *
-   * In QML, as also in C++, the service provider can be changed by assigning
+   * In QML, as in C++ too, the service provider can be changed by assigning
    * to the property `script` the desired one.
    *
    *     App.script = <service provider>
@@ -134,7 +134,7 @@ public:
   /*!
    * Sets the service provider *service* to supply the messaging service.
    *
-   * In QML, as also in C++, the service provider can be changed by assigning
+   * In QML, as in C++ too, the service provider can be changed by assigning
    * to the property `message` the desired one.
    *
    *     App.message = <service provider>
