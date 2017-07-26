@@ -5,8 +5,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include <QDebug>
-
 using namespace mqg::Core;
 
 static QObject* app_provider(QQmlEngine *engine, QJSEngine *scriptEngine) {
@@ -28,7 +26,6 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     qRegisterMetaType<Message>("Message");
-
     qmlRegisterSingletonType<Application>("mqg.Core.Application", 1,0,
                                           "App", app_provider);
 
