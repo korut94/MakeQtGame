@@ -21,7 +21,52 @@ RUN apt-get update && apt-get upgrade -y && \
 # Retrieve the source code, build the Qt version specified and install it.
 RUN git clone git://code.qt.io/qt/qt5.git && cd qt5 && git checkout v5.9.0 \
     && perl init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine \
-    && ./configure -developer-build -opensource -nomake examples -nomake tests \
+    && ./configure -developer-build -opensource -skip \
+       qt3d \
+       qtactiveqt \
+       qtandroidextras \
+       qtcanvas3d \
+       qtcharts \
+       qtconnectivity \
+       qtdatavis3d \
+       qtdoc \
+       qtdocgallery \
+       qtenginio \
+       qtfeedback \
+       qtgamepad \
+       qtimageformats \
+       qtlocation \
+       qtmacextras \
+       qtnewtworkauth \
+       qtpim \
+       qtpurchasing \
+       qtqa \
+       qtquick1 \
+       qtquickcontrols \
+       qtremoteobjects \
+       qtrepotools \
+       qtscript \
+       qtscxml \
+       qtsensors \
+       qtserialbus \
+       qtserialport \
+       qtspeech \
+       qtsvg \
+       qttools \
+       qtvirtualkeyboard \
+       qtwayland \
+       qtwebchannel \
+       qtwebengine \
+       qtwebkit \
+       qtwebkit-examples \
+       qtwebsockets \
+       qtwebview \
+       qtwineextras \
+       qtxmlpatterns \
+       -confirm-license \
+       -release \
+       -silent \
+       -nomake examples -nomake tests -nomake doc \
     && make -j4 \
     && make install
     
