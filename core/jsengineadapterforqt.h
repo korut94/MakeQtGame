@@ -30,16 +30,31 @@ namespace mqg
 {
 namespace Core
 {
+/*!
+ * The JSEngineAdapterForQt class wraps QJSEngine to make it in compilance
+ * with JSScriptEngine interface.
+ */
 class JSEngineAdapterForQt : public JSScriptEngine
 {
   Q_OBJECT
 
 public:
+  /*!
+   * Creates a script service provider points to a QJSEngine *engine*.
+   */
   explicit JSEngineAdapterForQt(QJSEngine *engine);
 
+  /*!
+   * Puts as root objects in the script environment all properties own to
+   * *object*.
+   */
   void addToEnvironment(const QJSValue &object);
 
 public slots:
+  /*!
+   * Evaluates *program* and emits a different signal if an error is occurred
+   * or not.
+   */
   void evaluate(const QString &program);
 
 private:
