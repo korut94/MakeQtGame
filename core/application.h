@@ -127,7 +127,7 @@ public:
    *
    *     App.script = <service provider>
    *
-   * **Note**: if a null pointer has been passed as argument, Application will
+   * \note If a null pointer has been passed as argument, Application will
    * set NullJSScriptEngine as service provider.
    */
   static void             provide(JSScriptEngine *service);
@@ -139,7 +139,7 @@ public:
    *
    *     App.message = <service provider>
    *
-   * **Note**: if a null pointer has been passed as argument, Application will
+   * \note If a null pointer has been passed as argument, Application will
    * set NullMessageHandler as service provider.
    */
   static void             provide(MessageHandler *service);
