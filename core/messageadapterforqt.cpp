@@ -28,23 +28,32 @@ namespace mqg
 {
 namespace Core
 {
+void
+MessageAdapterForQt::handleMessageByEmitting(QtMsgType type,
+                                             const QMessageLogContext &context,
+                                             const QString &msg)
+{
+  MessageHandler *handler = Application::getMessangeHandler();
+
+  assert(dynamic_cast<MessageAdapterForQt*>(handler) != nullptr);
+
+  switch (type) {
+  case QtDebugMsg: emit handler->log(Message(msg, context)); break;
+  case QtInfoMsg: emit handler->info(Message(msg, context)); break;
+  case QtWarningMsg: emit handler->warn(Message(msg, context)); break;
+  case QtCriticalMsg: emit handler->error(Message(msg, context)); break;
+  case QtFatalMsg: emit handler->fatal(Message(msg, context)); abort();
+  };
+}
+
 void MessageAdapterForQt::installAsQtMessageHandler()
 {
-  qInstallMessageHandler([] (QtMsgType type,
-                             const QMessageLogContext &context,
-                             const QString &msg) {
-    MessageHandler *handler = Application::getMessangeHandler();
+  qInstallMessageHandler(handleMessageByEmitting);
+}
 
-    assert(dynamic_cast<MessageAdapterForQt*>(handler) != nullptr);
-
-    switch (type) {
-    case QtDebugMsg: emit handler->log(Message(msg, context)); break;
-    case QtInfoMsg: emit handler->info(Message(msg, context)); break;
-    case QtWarningMsg: emit handler->warn(Message(msg, context)); break;
-    case QtCriticalMsg: emit handler->error(Message(msg, context)); break;
-    case QtFatalMsg: break;
-    }
-  });
+void MessageAdapterForQt::restoreDefaultQtMessageHandler()
+{
+  qInstallMessageHandler(0);
 }
 } // namespace Core
 } // namespace mqg

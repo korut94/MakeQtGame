@@ -28,12 +28,43 @@ namespace mqg
 {
 namespace Core
 {
+/*!
+ * The MessageAdapterForQt class adapts QMessageLogger to make it in compilance
+ * with MessageHandler interface.
+ */
 class MessageAdapterForQt : public MessageHandler
 {
   Q_OBJECT
 
 public:
+  /*!
+   * Installs the MessageAdapterForQt's message handler as Qt message handler.
+   *
+   * The MessageAdapterForQt's message handler emits all the messages generated
+   * from a QMessageLogger. In other worlds when the applications would prints
+   * by invoking qCritical(), qDebug(), qFatal(), qInfo() and qWarning() the
+   * following signals are emitted rispectively:
+   * - MessageHandler::error() for *critical* messages
+   * - MessageHandler::log() for *debug* messages
+   * - MessageHandler::fatal() for *fatal* messages
+   * - MessageHandler::info() for *info* messages
+   * - MessageHandler::warn() for *warning* messages
+   *
+   * In the case of *fatal* messages the application will be aborted after the
+   * fatal signal emission. In all cases no message one has an agreed output
+   * because it depends on which slot the signal has been connected before
+   * its emission.
+   */
   void installAsQtMessageHandler();
+  /*!
+   * Installs the default Qt message handler.
+   */
+  void restoreDefaultQtMessageHandler();
+
+private:
+  static void handleMessageByEmitting(QtMsgType type,
+                                      const QMessageLogContext &context,
+                                      const QString &msg);
 };
 } // namespace Core
 } // namespace mqg
