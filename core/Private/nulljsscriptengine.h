@@ -37,12 +37,12 @@ namespace Core
  * a null pointer), the NullJSScriptEngine provides a *null* service where in
  * any method nothing is done.
  *
- * **Note**: This class not should be use in the application directly, since
+ * \note
+ * This class not should be use in the application directly, since
  * the Application class worries about the instantiation of a null service when
  * requirement. For example:
- *
  * \code{.cpp}
- * Application::provide(nullptr) // Application will use a NullJSScriptEngine
+ * Application::provide(nullptr); // Application will use a NullJSScriptEngine
  * \endcode
  */
 class Application::NullJSScriptEngine : public JSScriptEngine
