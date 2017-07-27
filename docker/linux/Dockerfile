@@ -21,7 +21,7 @@ RUN apt-get update && apt-get upgrade -y && \
 # Retrieve the source code, build the Qt version specified and install it.
 RUN git clone git://code.qt.io/qt/qt5.git && cd qt5 && git checkout v5.9.0 \
     && perl init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine \
-    && ./configure -developer-build -opensource \
+    && ./configure -developer-build \
        -skip qt3d \
        -skip qtactiveqt \
        -skip qtandroidextras \
@@ -37,7 +37,7 @@ RUN git clone git://code.qt.io/qt/qt5.git && cd qt5 && git checkout v5.9.0 \
        -skip qtimageformats \
        -skip qtlocation \
        -skip qtmacextras \
-       -skip qtnewtworkauth \
+       -skip qtnetworkauth \
        -skip qtpim \
        -skip qtpurchasing \
        -skip qtqa \
@@ -61,12 +61,13 @@ RUN git clone git://code.qt.io/qt/qt5.git && cd qt5 && git checkout v5.9.0 \
        -skip qtwebkit-examples \
        -skip qtwebsockets \
        -skip qtwebview \
-       -skip qtwineextras \
+       -skip qtwinextras \
        -skip qtxmlpatterns \
+       -opensource \
        -confirm-license \
        -release \
        -silent \
-       -nomake examples -nomake tests -nomake doc \
+       -nomake examples -nomake tests \
     && make -j4 \
     && make install
     
