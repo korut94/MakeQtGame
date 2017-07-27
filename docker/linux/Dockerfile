@@ -20,7 +20,7 @@ RUN apt-get update && apt-get upgrade -y && \
     libasound2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev
 # Retrieve the source code, build the Qt version specified and install it.
 RUN git clone git://code.qt.io/qt/qt5.git && cd qt5 && git checkout v5.9.0 \
-    && perl init-repository --module-subset=qtbase \
+    && perl init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine \
     && ./configure -developer-build -opensource -nomake examples -nomake tests \
     && make -j4 \
     && make install
