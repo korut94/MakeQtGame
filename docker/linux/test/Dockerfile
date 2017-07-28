@@ -1,5 +1,4 @@
 FROM qt:linux
 
-CMD qmake -project "QT += testlib" && \
-    qmake && \
-    make
+CMD qmake && \
+    make check
