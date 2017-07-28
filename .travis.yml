@@ -5,6 +5,7 @@ services:
 
 before_install:
  - docker build -t qt:linux docker/linux/.
+ - docker build -t qt-test:linux docker/linux/test/
 
 script:
- - docker run --name qt-linux-test -v ${TRAVIS_BUILD_DIR}:/source qt:linux
+ - docker run --name qt-test-linux -v ${TRAVIS_BUILD_DIR}:/source qt-test:linux
