@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
 SUBDIRS += \
     core \
-    mqg
+    mqg \
+    tests \
