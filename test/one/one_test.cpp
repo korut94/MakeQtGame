@@ -32,7 +32,7 @@ private slots:
 
 void FirstTest::testCase1()
 {
-  QVERIFY(true);
+  QVERIFY(false);
 }
 
 QTEST_MAIN(FirstTest)
