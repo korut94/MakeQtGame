@@ -35,7 +35,7 @@ private slots:
 
 void Test::test_case1()
 {
-  QCOMPARE(0,0);
+  QCOMPARE(0,1);
 }
 
 QTEST_MAIN(Test)
