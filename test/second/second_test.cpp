@@ -33,7 +33,7 @@ private slots:
 void SecondTest::testCase2()
 {
   QString str = "Hello";
-  QVERIFY(str.toUpper() == "HElLO");
+  QVERIFY(str.toUpper() == "HELLO");
 }
 
 QTEST_MAIN(SecondTest)
