@@ -6,7 +6,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y software-properti
 RUN apt-get update && apt-get install -y \
     build-essential \
     libgl1-mesa-dev \
-    qt59-meta-full
+    qt59-meta-minimal
 
 RUN ln -s /opt/qt59/bin/qmake /usr/bin/qmake
 
