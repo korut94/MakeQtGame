@@ -8,8 +8,6 @@ RUN apt-get update && apt-get install -y \
     libgl1-mesa-dev \
     qt59-meta-minimal
 
-CMD /opt/qt59/bin/qmake && make
-
 RUN mkdir /source
 VOLUME /source
 WORKDIR /source
