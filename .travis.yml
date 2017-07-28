@@ -8,4 +8,4 @@ before_install:
  - docker build -t qt-test:linux docker/linux/test/
 
 script:
- - docker run --name qt-test-linux -v ${TRAVIS_BUILD_DIR}:/source qt-test:linux
+ - docker run --name qt-test-linux --rm -v ${TRAVIS_BUILD_DIR}:/source qt-test:linux
