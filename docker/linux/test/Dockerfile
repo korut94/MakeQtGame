@@ -1,5 +1,4 @@
 FROM qt:linux
 
-CMD qmake && \
-    make check
+CMD qmake && make check
 
