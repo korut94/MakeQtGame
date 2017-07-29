@@ -6,6 +6,16 @@ services:
 before_install:
  - docker build -t qt:linux docker/linux/
  - docker build -t qt-test:linux docker/linux/test/
+ - docker build -t docs docker/docs
 
 script:
  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/source qt-test:linux
+ - docker run --rm -v ${TRAVIS_BUILD_DIR}:/docs docs Doxyfile
+
+deploy:
+ - provider: pages
+   skip_cleanup: true
+   github_token: $GITHUB_TOKEN
+   local_dir: docs
+   on:
+    branch: dev
