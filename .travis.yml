@@ -6,11 +6,11 @@ services:
 before_install:
  - docker build -t qt:linux docker/linux/
  - docker build -t qt-test:linux docker/linux/test/
- - docker build -t docs docker/docs
+ - docker build -t doxygen docker/docs
 
 script:
  - docker run --rm -v ${TRAVIS_BUILD_DIR}:/source qt-test:linux
- - docker run --rm -v ${TRAVIS_BUILD_DIR}:/docs docs Doxyfile
+ - docker run --rm -v ${TRAVIS_BUILD_DIR}:/docs doxygen Doxyfile
 
 deploy:
  - provider: pages
