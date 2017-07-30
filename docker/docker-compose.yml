@@ -1,6 +1,6 @@
 version: '2'
 services:
-  qt5_linux:
+  qt5:
     build: linux/
   docs:
     build: docs/
