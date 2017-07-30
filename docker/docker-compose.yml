@@ -2,7 +2,7 @@ version: '2'
 services:
   test:
     build: linux/
-    command: qmake && make check -s
+    command: qmake && make check
   docs:
     build: docs/
   
