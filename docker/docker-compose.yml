@@ -1,7 +1,8 @@
 version: '2'
 services:
-  qt5:
+  test:
     build: linux/
+    command: qmake && make check -s
   docs:
     build: docs/
   
