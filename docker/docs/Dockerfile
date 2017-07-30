@@ -7,6 +7,6 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 
 ENTRYPOINT doxygen
 
-RUN mkdir /docs
-VOLUME /docs
-WORKDIR /docs
+RUN mkdir /source
+VOLUME /source
+WORKDIR /source
