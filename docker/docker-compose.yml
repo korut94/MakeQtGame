@@ -1,16 +1,15 @@
 version: '2'
 
 services:
+  echo:
+    image: ubuntu:trusty
+    command: echo ${TRAVIS_BUILD_DIR}
+
   test:
     build: linux/
-    command: bash -c "qmake && make check"
-    volumes:
-      - source_volume:/source
+    command: bash -c "qmake && make check --silent"
+      
   docs:
     build: docs/
-    volumes:
-      - source_volume:/source
+    command: doxygen Doxyfile
 
-volumes:
-  source_volume:
-  
