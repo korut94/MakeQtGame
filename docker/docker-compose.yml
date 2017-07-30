@@ -1,0 +1,7 @@
+version: '2'
+services:
+  qt5_linux:
+    build: linux/
+  docs:
+    build: docs/
+  
