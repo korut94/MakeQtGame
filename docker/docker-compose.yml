@@ -3,8 +3,8 @@ services:
   test:
     build: linux/
     command: bash -c "qmake && make check"
-    volume: source_volume:/source
+    volumes: source_volume:/source
   docs:
     build: docs/
-    volume: source_volume:/source
+    volumes: source_volume:/source
   
