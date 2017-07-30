@@ -4,11 +4,11 @@ services:
  - docker
 
 before_install:
- - docker-compose --file docker/ build
+ - docker-compose --file docker/docker-compose.yml build
 
 script:
- - docker-compose --file docker/ up
- - docker-compose --file docker/ down
+ - docker-compose --file docker/docker-compose.yml up
+ - docker-compose --file docker/docker-compose.yml down
 
 deploy:
  - provider: pages
