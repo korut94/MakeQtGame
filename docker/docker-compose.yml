@@ -2,7 +2,7 @@ version: '2'
 services:
   test:
     build: linux/
-    command: qmake && make check
+    command: bash -c "qmake && make check --silent"
   docs:
     build: docs/
   
