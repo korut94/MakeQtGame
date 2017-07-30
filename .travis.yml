@@ -7,7 +7,7 @@ before_install:
  - docker-compose --file docker/docker-compose.yml build
 
 script:
- - docker-compose --file docker/docker-compose.yml up qt5 qmake && make check
+ - docker-compose --file docker/docker-compose.yml up test
  - docker-compose --file docker/docker-compose.yml down
 
 deploy:
