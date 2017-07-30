@@ -2,7 +2,9 @@ version: '2'
 services:
   test:
     build: linux/
-    command: bash -c "qmake && make check --silent"
+    command: bash -c "qmake && make check"
+    volume: source_volume:/source
   docs:
     build: docs/
+    volume: source_volume:/source
   
