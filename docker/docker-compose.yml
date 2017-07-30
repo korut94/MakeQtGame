@@ -1,4 +1,5 @@
 version: '2'
+
 services:
   test:
     build: linux/
@@ -9,4 +10,7 @@ services:
     build: docs/
     volumes:
       - source_volume:/source
+
+volumes:
+  source_volume:
   
