@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  test:
+    build: linux/
+    entrypoint: /bin/run_test.sh
+    volumes:
+      - ./linux/run_test.sh:/bin/run_test.sh
