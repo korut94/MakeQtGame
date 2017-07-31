@@ -6,4 +6,4 @@
 
 qmake
 make check --silent
-make clean
+make clean --silent
