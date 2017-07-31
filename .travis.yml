@@ -4,13 +4,14 @@ services:
  - docker
 
 before_install:
+ # Need to install local-persist. See: https://github.com/CWSpear/local-persist
  - curl -fsSL https://raw.githubusercontent.com/CWSpear/local-persist/master/scripts/install.sh | sudo bash -s -- --upstart
  - docker volume create -d local-persist -o mountpoint=${TRAVIS_BUILD_DIR} --name=source-data 
  - docker-compose --file docker/docker-compose.yml build
 
 script:
- - docker-compose --file docker/docker-compose.yml run test
- - docker-compose --file docker/docker-compose.yml run docs
+ - docker-compose --file docker/docker-compose.yml up test
+ - docker-compose --file docker/docker-compose.yml up docs
 
 deploy:
  - provider: pages
