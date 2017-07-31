@@ -12,6 +12,7 @@ before_install:
 script:
  - docker-compose --file docker/docker-compose.yml up test
  - docker-compose --file docker/docker-compose.yml up docs
+ - docker-compose --file docker/docker-compose.yml down
 
 deploy:
  - provider: pages
