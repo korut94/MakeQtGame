@@ -4,19 +4,7 @@ services:
  - docker
 
 before_install:
- - sudo add-apt-repository -y ppa:pitti/systemd
- - sudo apt-get dist-upgrade -y
- # To install the Docker plugin 'local-persist':
- # see https://github.com/CWSpear/local-persist
- - curl -o local-persist-linux-amd64 https://github.com/CWSpear/local-persist/releases/download/v1.3.0/local-persist-linux-amd64
- - sudo mv local-persist-linux-amd64 /usr/bin/docker-volume-local-persist
- - sudo chmod +x /usr/bin/docker-volume-local-persist
- - curl -o systemd.service https://github.com/CWSpear/local-persist/blob/master/init/systemd.service
- - sudo mkdir -p /etc/systemd/system/
- - sudo mv systemd.service /etc/systemd/system/docker-volume-local-persist.service
- - sudo systemctl daemon-reload
- - sudo systemctl enable docker-volume-local-persist
- - sudo systemctl start docker-volume-local-persist
+ - curl -fsSL https://raw.githubusercontent.com/CWSpear/local-persist/master/scripts/install.sh | sudo bash -s -- --upstart
  - docker volume create -d local-persist -o mountpoint=${TRAVIS_BUILD_DIR} --name=source-data 
  - docker-compose --file docker/docker-compose.yml build
 
