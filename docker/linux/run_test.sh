@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # MakeQtGame
 # Copyright (C) 2017 Andrea Mantovani
