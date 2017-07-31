@@ -3,7 +3,7 @@ version: '2'
 services:
  test:
    build: linux/
-   command: linux/test.sh
+   entrypoint: linux/test.sh
    volumes:
     - source-data:/source
       
