@@ -1,10 +1,6 @@
 version: '2'
 
 services:
-  test:
-    volumes:
-      - source-data:/source
-
   docs:
     build: docs/
     command: doxygen Doxyfile
