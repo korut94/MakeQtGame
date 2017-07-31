@@ -10,9 +10,8 @@ before_install:
  - docker-compose --file docker/docker-compose.yml build
 
 script:
- - docker-compose --file docker/docker-compose.yml up test
- - docker-compose --file docker/docker-compose.yml up docs
- - docker-compose --file docker/docker-compose.yml down
+ - docker-compose --file docker/docker-compose.yml run test
+ - docker-compose --file docker/docker-compose.yml run docs
 
 deploy:
  - provider: pages
