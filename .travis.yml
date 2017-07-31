@@ -6,10 +6,10 @@ services:
 before_install:
  # To install the Docker plugin 'local-persist':
  # see https://github.com/CWSpear/local-persist
- - curl -ofsSL https://github.com/CWSpear/local-persist/releases/download/v1.3.0/local-persist-linux-amd64
+ - curl -ofsSL local-persist-linux-amd64 https://github.com/CWSpear/local-persist/releases/download/v1.3.0/local-persist-linux-amd64
  - sudo mv local-persist-linux-amd64 /usr/bin/docker-volume-local-persist
  - sudo chmod +x /usr/bin/docker-volume-local-persist
- - curl -o https://github.com/CWSpear/local-persist/blob/master/init/systemd.service
+ - curl -o systemd.service https://github.com/CWSpear/local-persist/blob/master/init/systemd.service
  - sudo mv systemd.service /etc/systemd/system/docker-volume-local-persist.service
  - sudo systemctl daemon-reload
  - sudo systemctl enable docker-volume-local-persist
