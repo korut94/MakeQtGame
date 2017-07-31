@@ -1,18 +1,20 @@
 version: '2'
 
 services:
- test:
-   build: linux/
-   entrypoint: linux/test.sh
-   volumes:
-    - source-data:/source
+  test:
+    build: linux/
+    entrypoint: /bin/run_test.sh
+    volumes:
+      - ./linux/run_test.sh:/bin/run_test.sh
+      - source-data:/source
       
- docs:
-  build: docs/
-  command: doxygen Doxyfile
-  volumes:
-   - source-data:/source
+  docs:
+    build: docs/
+    command: doxygen Doxyfile
+    volumes:
+      - source-data:/source
 
 volumes:
- source-data:
-  external: true
+  source-data:
+    external: true
+    
