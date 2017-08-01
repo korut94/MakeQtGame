@@ -30,7 +30,10 @@ namespace mqg
 {
 namespace Core
 {
-
+/*!
+ * The JSEngineAdapterForQt class wraps QJSEngine to make it in compilance
+ * with JSScriptEngine interface.
+ */
 class JSEngineAdapterForQt : public JSScriptEngine
 {
   Q_OBJECT
