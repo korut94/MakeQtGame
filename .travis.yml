@@ -9,7 +9,7 @@ before_install:
   # Require from the Docker's services. The volume 'source-data' is declared 'external' in the Docker Compose configuration
   # to decouple the source code's location with that of the Docker Compose file. Since the physical paths are resolved in
   # the building configuration context itself (like this for Travis.CI) and not in the Docker file, it can be moved in a
-  # different one.
+  # different context.
   - docker volume create -d local-persist -o mountpoint=${TRAVIS_BUILD_DIR} --name=source-data
   - docker-compose -f docker/docker-compose.yml build
   - docker-compose -f docker/docker-compose.yml -f docker/docker-compose.linux.yml build
