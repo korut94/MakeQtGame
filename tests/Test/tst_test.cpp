@@ -41,7 +41,7 @@ void Test::test_case1()
 
 void Test::test_case2()
 {
-  QCOMPARE("hello", "hello");
+  QCOMPARE("hello", "Hello");
 }
 
 QTEST_MAIN(Test)
