@@ -10,4 +10,4 @@
 *.qmake.stash
 
 # Doxygen
-documentation/
+docs/
