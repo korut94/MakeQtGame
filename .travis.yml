@@ -18,6 +18,9 @@ script:
   - docker-compose -f docker/docker-compose.yml -f docker/docker-compose.linux.yml run test
   - docker-compose -f docker/docker-compose.yml run docs
 
+# See: https://github.com/travis-ci/travis-ci/issues/7995#issuecomment-313169701
+before_deploy: sudo chown -R travis:travis /home/travis/
+
 deploy:
   provider: pages
   skip_cleanup: true
