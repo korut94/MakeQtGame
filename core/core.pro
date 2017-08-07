@@ -5,10 +5,19 @@ DESTDIR = ../
 TARGET = MakeQtGame
 
 SOURCES += \
-  engine.cpp \
-  environment.cpp \
-  main.cpp
+  main.cpp \
+    jsengineadapterforqt.cpp \
+    application.cpp \
+    messageadapterforqt.cpp \
+    messagehandler.cpp
+
 HEADERS += \
-  engine.h \
-  environment.h
+    jsscriptengine.h \
+    jsengineadapterforqt.h \
+    application.h \
+    messagehandler.h \
+    messageadapterforqt.h
+
 RESOURCES += mqg.qrc
+
+include(Private/private.pri)

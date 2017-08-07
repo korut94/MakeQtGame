@@ -3,7 +3,7 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts  1.3
 import QtQuick.Window   2.2
 
-import mqg.Core.Engine          1.0
+import mqg.Core.Application     1.0
 import mqg.GUI.Widget.Console   1.0
 
 Window {
@@ -15,8 +15,6 @@ Window {
     visible: true
 
     RowLayout {
-        id: window_layout
-
         spacing: 0
 
         anchors.fill: parent
@@ -39,21 +37,12 @@ Window {
         }
     }
 
-    Engine {
-        id: engine
+    Component.onCompleted: {
+        mqg_console.submit.connect(App.script.evaluate)
 
-        env: Environment {
-            readonly property var close: function () { window.close() }
-            readonly property var out: mqg_console
-            readonly property var window: window
-        }
-
-        onErrorOccurred: console.log(error)
-
-        Component.onCompleted: {
-            mqg_console.submit.connect(evaluate)
-
-            loadEnvironment()
-        }
+        App.script.addToEnvironment({
+            exit: function () { Qt.quit() },
+            window: window
+        })
     }
 }

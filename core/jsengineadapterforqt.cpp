@@ -19,39 +19,38 @@
  *
  *****************************************************************************/
 
-#include "application.h"
 #include "jsengineadapterforqt.h"
-#include "messageadapterforqt.h"
 
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
+#include <QJSValueIterator>
 
-using namespace mqg::Core;
-
-static QObject* app_provider(QQmlEngine *engine, QJSEngine *scriptEngine) {
-  Q_UNUSED(engine);
-
-  JSEngineAdapterForQt *script = new JSEngineAdapterForQt(scriptEngine);
-  MessageAdapterForQt *message = new MessageAdapterForQt();
-
-  message->installAsQtMessageHandler();
-
-  Application::provide(script);
-  Application::provide(message);
-
-  return &Application::instance();
-}
-
-int main(int argc, char *argv[])
+namespace mqg
 {
-    QGuiApplication app(argc, argv);
+namespace Core
+{
+JSEngineAdapterForQt::JSEngineAdapterForQt(QJSEngine *engine)
+  : m_engine(engine) {}
 
-    qRegisterMetaType<Message>("Message");
-    qmlRegisterSingletonType<Application>("mqg.Core.Application", 1,0,
-                                          "App", app_provider);
+void JSEngineAdapterForQt::addToEnvironment(const QJSValue &object)
+{
+  if (object.isObject()) {
+    QJSValueIterator it(object);
 
-    QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
-
-    return app.exec();
+    while (it.hasNext()) {
+      it.next();
+      m_engine->globalObject().setProperty(it.name(), it.value());
+    }
+  }
 }
+
+void JSEngineAdapterForQt::evaluate(const QString &program)
+{
+  QJSValue result = m_engine->evaluate(program);
+
+  if (result.isError()) {
+    emit error(result);
+  } else {
+    emit success(result);
+  }
+}
+} // namespace Core
+} // namespace mqg

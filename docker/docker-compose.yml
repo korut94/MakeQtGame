@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  docs:
+    build: docs/
+    command: doxygen Doxyfile
+    volumes:
+      - source-data:/source
+
+volumes:
+  source-data:
+    external: true
+    
