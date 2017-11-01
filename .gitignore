@@ -9,4 +9,4 @@
 *.qmlc
 
 # Doxygen
-documentation/
+docs/
