@@ -40,6 +40,10 @@ Window {
     Component.onCompleted: {
         mqg_console.submit.connect(App.script.evaluate)
 
+        App.message.log.connect(mqg_console.log)
+        App.script.error.connect(mqg_console.error)
+        App.script.success.connect(mqg_console.success)
+
         App.script.addToEnvironment({
             exit: function () { Qt.quit() },
             window: window
