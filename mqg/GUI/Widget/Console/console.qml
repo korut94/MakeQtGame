@@ -5,79 +5,59 @@ import QtQuick.Layouts  1.3
 Item {
     signal submit(string command)
 
+    function error(message) {
+
+    }
+
+    function log(message) {
+        logger.append("<font color='grey'>" + message.text + "</font>")
+    }
+
+    function scriptException(error) {
+        logger.append("<font color='red'>" + error.message + "</font>")
+    }
+
+    function scriptResult(result) {
+        if (result !== undefined) {
+            logger.append("<font color='blue'>" + result + "</font>")
+        }
+    }
+
     ColumnLayout {
-        id: mqg_console_layout
+        id: layout
 
         anchors.fill: parent
 
         ScrollView {
-            id: mqg_view_console_input
+            id: view
 
             Layout.fillWidth: true
             Layout.maximumHeight: 100
 
             TextArea {
-                id: mqg_console_input
+                id: commandInput
 
                 placeholderText: qsTr("Insert command...")
                 wrapMode: TextArea.Wrap
 
                 Keys.onReturnPressed: {
-                    mqg_console.submit(mqg_console_input.text)
+                    logger.append("* " + commandInput.text)
+                    submit(commandInput.text)
                     clear()
                 }
             }
         }
 
-        ListView {
-            id: mqg_view_console_log
+        TextEdit {
+            id: logger
 
-            Layout.fillWidth: true
             Layout.fillHeight: true
+            Layout.fillWidth: true
 
-            spacing: 5
-
-            model: ListModel {
-                ListElement {
-                    message: "ci siamo"
-                    type: "debug"
-                }
-
-                ListElement {
-                    message: "era orasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
-                    type: "error"
-                }
-            }
-
-            delegate: Rectangle {
-                id: background
-
-                color: "#FF9999"
-                width: mqg_view_console_log.width
-                height: msg.height
-
-                Row {
-                    Rectangle {
-                        color: "#FF3333"
-                        height: msg.height
-                        radius: 2
-                        width: 12
-                    }
-
-                    Text {
-                        id: msg
-
-                        color: "#550000"
-
-                        font.pointSize: 11
-                        leftPadding: 10
-                        rightPadding: 20
-                        text: message
-                        width: background.width
-                        wrapMode: Text.Wrap
-                    }
-                }
-            }
+            leftPadding: 5
+            textFormat: TextEdit.RichText
+            readOnly: true
+            wrapMode: TextEdit.Wrap
         }
     }
 }
