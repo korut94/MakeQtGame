@@ -1,10 +1,10 @@
+import mqg.Core.Application     1.0
+import mqg.GUI.Widget.Console   1.0
+
 import QtQuick          2.9
 import QtQuick.Controls 2.2
 import QtQuick.Layouts  1.3
 import QtQuick.Window   2.2
-
-import mqg.Core.Application     1.0
-import mqg.GUI.Widget.Console   1.0
 
 Window {
     id: window
@@ -39,6 +39,11 @@ Window {
 
     Component.onCompleted: {
         mqg_console.submit.connect(App.script.evaluate)
+
+        App.message.log.connect(mqg_console.log)
+        App.message.error.connect(mqg_console.error)
+        App.script.error.connect(mqg_console.scriptException)
+        App.script.success.connect(mqg_console.scriptResult)
 
         App.script.addToEnvironment({
             exit: function () { Qt.quit() },
