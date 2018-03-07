@@ -15,7 +15,7 @@ namespace Service
  *
  * Very important is that a service should be not care about updating its state
  * by itself: indeed, the service providing a suitable set of API will be
- * updated by the application logic emitting signals that, invoking the
+ * updated by the IApplication logic emitting signals that, invoking the
  * binded function, move forward the service's state.
  */
 class IService
