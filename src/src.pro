@@ -8,3 +8,6 @@ SOURCES += \
 
 include(Script/script.pri)
 include(Service/service.pri)
+
+HEADERS += \
+    iapplication.h
