@@ -3,12 +3,10 @@
 
 #include "../iapplication.h"
 #include "../Service/iservice.h"
+#include "../Service/services.h"
 
 namespace mqg
 {
-
-class Services;
-
 namespace Service
 {
 namespace Script
@@ -35,7 +33,7 @@ class IScriptService : public IService {
 public:
     /*!
      * Builds the scripting environment providing an access to \p app and all
-     * the services pointed by the collection \p services.
+     * the services pointed by the \p services collection.
      *
      * The choice of the language and the way to integrate the different
      * services is completed left to the concrete implementation of the
