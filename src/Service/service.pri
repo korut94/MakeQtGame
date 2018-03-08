@@ -1,2 +1,3 @@
 HEADERS += \
-    $$PWD/iservice.h
+    $$PWD/iservice.h \
+    $$PWD/services.h
