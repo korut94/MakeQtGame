@@ -1,9 +1,9 @@
 #ifndef ISCRIPTSERVICE_H
 #define ISCRIPTSERVICE_H
 
-#include "../iapplication.h"
-#include "../Service/iservice.h"
-#include "../Service/services.h"
+#include "iapplication.h"
+#include "Service/iservice.h"
+#include "Service/services.h"
 
 namespace mqg
 {
@@ -31,6 +31,7 @@ namespace Script
 */
 class IScriptService : public IService {
 public:
+    virtual ~IScriptService() {}
     /*!
      * Builds the scripting environment providing an access to \p app and all
      * the services pointed by the \p services collection.
