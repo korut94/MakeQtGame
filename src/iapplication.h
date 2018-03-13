@@ -19,6 +19,7 @@ namespace mqg
 class IApplication
 {
 public:
+    virtual ~IApplication() {}
     /*!
      * Runs tha application passing the optional arguments by \p argc and \p
      * argv.
