@@ -21,17 +21,13 @@ class IApplication
 public:
     virtual ~IApplication() {}
     /*!
-     * Runs tha application passing the optional arguments by \p argc and \p
-     * argv.
+     * Runs tha application.
      *
      * The exec method doesn't return any status code at the end of the
-     * execution, indeed insine the mqg's main the invokation to the exec
-     * method is wrapped by a try-catch statement.
-     *
-     * In case you are using some libraries that imply the returning of an exit
-     * code, invoke handleExitCode with the returned value.
+     * execution, indeed inside the mqg's main its invokation is wrapped by
+     * a try-catch statement.
      */
-    virtual void exec(int argc, char **argv) = 0;
+    virtual void exec() = 0;
 };
 } // namespace mqg
 
